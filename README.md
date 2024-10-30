@@ -34,3 +34,4 @@ Do Set up EditorConfig Environment for your editor of choice.
 - Proto Lint
 - rust-analyzer
 - vscode-proto3
+- TODO Tree

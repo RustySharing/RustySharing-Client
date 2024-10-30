@@ -12,6 +12,7 @@ pkgs.mkShell {
     glib
     graphene
     gtk4
+    libadwaita
     ];
   RUST_BACKTRACE = 1;
 
