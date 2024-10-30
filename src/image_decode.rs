@@ -1,10 +1,7 @@
-use image::{ GenericImageView, imageops, DynamicImage };
+use image::{ DynamicImage, GenericImageView };
 use serde::{ Serialize, Deserialize };
-use serde_json::to_vec;
-use steganography::{ encoder, decoder };
+use steganography:: decoder;
 use std::str;
-use std::fs::File;
-use std::io::Read;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct EmbeddedMetaData {
@@ -31,6 +28,7 @@ pub fn load_image_from_file(file_path: &str) -> Result<DynamicImage, String> {
 }
 
 pub fn decode_image(image: DynamicImage) -> Result<(DynamicImage, EmbeddedMetaData), String> {
+
   let my_decoder = decoder::Decoder::new(image.to_rgba());
   let decoded_data = my_decoder.decode_alpha();
 
