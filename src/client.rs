@@ -1,11 +1,12 @@
-use rpc_service::simple_request_service::{ connect, send_hello };
-use rpc_service::gui_driver::start_gui;
+use rpc_client::simple_request_service::{ connect, send_hello };
+use rpc_client::image_encode_service::{ connect, image_encode };
+use rpc_client::gui_driver::start_gui;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
   let mut client = connect().await;
-  let response = send_hello(&mut client, "I am a Request from client").await;
+  let response = image_encode(&mut client, "./test/images/kunst.png", &100, &100).await;
 
   println!("RESPONSE={:?}", response);
 

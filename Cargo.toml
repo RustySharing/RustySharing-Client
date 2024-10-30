@@ -16,6 +16,9 @@ image = "0.25.4"
 # Protocol buffer implementation
 
 prost = "0.13.3"
+serde = { version = "1.0.214", features = ["derive"] }
+serde_json = "1.0.132"
+steganography = "1.0.2"
 tokio = {version = "1.41.0", features=["macros","rt-multi-thread"]}
 
 # Grpc implementation
