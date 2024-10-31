@@ -6,7 +6,7 @@ pub mod hello {
 }
 
 pub async fn connect() -> HelloClient<tonic::transport::Channel> {
-  HelloClient::connect("http://[::1]:50051").await.unwrap()
+  HelloClient::connect("http://10.7.17.128:50051").await.unwrap()
 }
 
 // send hello request to server, and return the response as string

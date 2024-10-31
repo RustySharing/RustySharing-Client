@@ -8,7 +8,7 @@ pub mod image_encoding {
 }
 
 pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
-  ImageEncoderClient::connect("http://[::1]:50051").await.unwrap()
+  ImageEncoderClient::connect("http://10.7.17.128:50051").await.unwrap()
 }
 
 pub async fn image_encode(
