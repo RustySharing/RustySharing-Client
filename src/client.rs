@@ -11,7 +11,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
   //let mut image_data = Vec::new();
   //image_data = image_file.bytes().map(|byte| byte.unwrap()).collect();
 
-  let response = image_encode(&mut client, "/home/weso/Documents/Rust/rpc_client/src/test/images/doctor.png", 2000, 3000).await;
+  let response = image_encode(&mut client, "/home/ahmedwaseemr@auc.egy/Downloads/kamala.jpeg", 2000, 3000).await;
 
   println!("RESPONSE={:?}", response);
 
