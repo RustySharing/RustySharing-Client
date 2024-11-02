@@ -1,14 +1,14 @@
-use tokio::net::UdpSocket;
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, Read, Write};
 use std::time::Duration;
-use std::collections::HashMap;
+use tokio::net::UdpSocket;
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
     let main_socket = UdpSocket::bind("127.0.0.1:5000").await?; // Use a fixed port for client
     let server_main_addr = "127.0.0.1:8080";
-    let image_path = "/home/bavly.remon2004@auc.egy/Downloads/catmeme.jpeg"; // Replace with your image path
+    let image_path = "/home/omarelfouly@auc.egy/RustySharing-Client/input.jpeg"; // Replace with your image path
     let mut file = File::open(image_path)?;
     let mut buf = Vec::new();
 
@@ -40,7 +40,9 @@ async fn main() -> io::Result<()> {
             println!("Sent packet {}", packet_number);
 
             let mut ack_buf = [0; 2];
-            match tokio::time::timeout(Duration::from_secs(1), main_socket.recv_from(&mut ack_buf)).await {
+            match tokio::time::timeout(Duration::from_secs(1), main_socket.recv_from(&mut ack_buf))
+                .await
+            {
                 Ok(Ok((_, _))) => {
                     let ack_packet_number = u16::from_be_bytes(ack_buf);
                     if ack_packet_number == packet_number {
@@ -49,7 +51,10 @@ async fn main() -> io::Result<()> {
                     }
                 }
                 _ => {
-                    println!("No acknowledgment received for packet {}, resending...", packet_number);
+                    println!(
+                        "No acknowledgment received for packet {}, resending...",
+                        packet_number
+                    );
                 }
             }
         }
@@ -80,7 +85,9 @@ async fn main() -> io::Result<()> {
         received_packets.insert(packet_number, data);
         total_packets = total_packets.max(packet_number + 1);
 
-        main_socket.send_to(&packet_number.to_be_bytes(), &server_addr).await?;
+        main_socket
+            .send_to(&packet_number.to_be_bytes(), &server_addr)
+            .await?;
         println!("Acknowledgment sent for packet {}", packet_number);
     }
 
