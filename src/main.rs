@@ -66,7 +66,7 @@ async fn main() -> io::Result<()> {
 
 // Function to send the image to the specified server address using the same socket
 async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr) -> io::Result<()> {
-    let image_path = "/home/bavly.remon2004@auc.egy/Downloads/orange.png"; // Replace with the path to your image
+    let image_path = "input.jpeg"; // Replace with the path to your image
     let mut file = File::open(image_path)?;
     let mut buf = Vec::new();
 
