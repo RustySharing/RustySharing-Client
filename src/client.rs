@@ -5,13 +5,14 @@ use std::fs::*;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
-  let mut client = connect().await;
+  //let mut client = connect().await;
 
  // let mut image_file = File::open("/home/ahmedwaseemr@auc.egy/Downloads/trump7.jpeg").unwrap();
   //let mut image_data = Vec::new();
   //image_data = image_file.bytes().map(|byte| byte.unwrap()).collect();
 
-  let response = image_encode(&mut client, "/home/ahmedwaseemr@auc.egy/Downloads/kamala.jpeg", 2000, 3000).await;
+  let response = image_encode("/home/bavly.remon2004@auc.egy/Downloads/orange.png", 2000, 3000).await;
+
 
   println!("RESPONSE={:?}", response);
 
