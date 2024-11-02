@@ -1,8 +1,8 @@
-use tokio::net::UdpSocket;
 use std::fs::File;
 use std::io::{self, Read, Write};
-use std::time::Duration;
 use std::net::{Ipv4Addr, SocketAddr};
+use std::time::Duration;
+use tokio::net::UdpSocket;
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
@@ -16,20 +16,35 @@ async fn main() -> io::Result<()> {
     client_socket.set_multicast_ttl_v4(1)?;
 
     // Multicast "send request" to all servers
-    client_socket.send_to(&[1], (multicast_addr, multicast_port)).await?;
+    client_socket
+        .send_to(&[1], (multicast_addr, multicast_port))
+        .await?;
     println!("Sent multicast image transfer request to all servers");
 
     // Wait for a response with the specific IP and port from the server with the talking stick
     let mut response_buf = [0; 6]; // 4 bytes for IP + 2 bytes for port
     let (len, server_addr) = client_socket.recv_from(&mut response_buf).await?;
 
-    println!("Received response of length {} from {}: {:?}", len, server_addr, &response_buf[..len]);
+    println!(
+        "Received response of length {} from {}: {:?}",
+        len,
+        server_addr,
+        &response_buf[..len]
+    );
 
     if len == 6 {
-        let ip = Ipv4Addr::new(response_buf[0], response_buf[1], response_buf[2], response_buf[3]);
+        let ip = Ipv4Addr::new(
+            response_buf[0],
+            response_buf[1],
+            response_buf[2],
+            response_buf[3],
+        );
         let port = u16::from_be_bytes([response_buf[4], response_buf[5]]);
         let server_image_addr = SocketAddr::new(ip.into(), port);
-        println!("Received response from server with IP {} and port {}", ip, port);
+        println!(
+            "Received response from server with IP {} and port {}",
+            ip, port
+        );
 
         // Proceed to send the image to the server on the provided IP and port using the same socket
         send_image_to_server(&client_socket, server_image_addr).await?;
@@ -64,7 +79,8 @@ async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr) -> io
             println!("Sent packet {}", packet_number);
 
             let mut ack_buf = [0; 2];
-            match tokio::time::timeout(Duration::from_secs(1), socket.recv_from(&mut ack_buf)).await {
+            match tokio::time::timeout(Duration::from_secs(1), socket.recv_from(&mut ack_buf)).await
+            {
                 Ok(Ok((_, _))) => {
                     let ack_packet_number = u16::from_be_bytes(ack_buf);
                     if ack_packet_number == packet_number {
@@ -73,7 +89,10 @@ async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr) -> io
                     }
                 }
                 _ => {
-                    println!("No acknowledgment received for packet {}, resending...", packet_number);
+                    println!(
+                        "No acknowledgment received for packet {}, resending...",
+                        packet_number
+                    );
                 }
             }
         }
@@ -104,7 +123,9 @@ async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr) -> io
         received_packets.insert(packet_number, data);
         total_packets = total_packets.max(packet_number + 1);
 
-        socket.send_to(&packet_number.to_be_bytes(), server_addr).await?;
+        socket
+            .send_to(&packet_number.to_be_bytes(), server_addr)
+            .await?;
         println!("Acknowledgment sent for packet {}", packet_number);
     }
 
