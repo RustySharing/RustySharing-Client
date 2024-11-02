@@ -1,8 +1,16 @@
+use serde::{Deserialize, Serialize};
 use std::fs::File;
 use std::io::{self, Read, Write};
 use std::net::{Ipv4Addr, SocketAddr};
 use std::time::Duration;
+use steganography::decoder;
 use tokio::net::UdpSocket;
+
+#[derive(Serialize, Deserialize, Debug)]
+struct EmbeddedData {
+    message: String,
+    timestamp: String,
+}
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
@@ -138,9 +146,40 @@ async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr) -> io
     }
 
     // Save the received image as a new file
-    let mut file = File::create("received_image.jpeg")?;
+    let output_path = "received_image.jpeg";
+    let mut file = File::create(output_path)?;
     file.write_all(&image_data)?;
     println!("Image saved as 'received_image.jpeg'.");
+
+    let decoded_img = image::open(output_path).expect("Failed to open encoded image");
+    let my_decoder = decoder::Decoder::new(decoded_img.to_rgba());
+    let decoded_data = my_decoder.decode_alpha();
+
+    // Find the position of the JSON content
+    let start = decoded_data
+        .iter()
+        .position(|&b| b == b'{')
+        .expect("Opening brace not found");
+    let end = decoded_data
+        .iter()
+        .position(|&b| b == b'}')
+        .expect("Closing brace not found");
+
+    let json_part = &decoded_data[start..=end]; // Include the closing brace
+    let original_image_part = &decoded_data[end + 1..]; // Skip past the closing brace
+
+    let decoded_json: EmbeddedData =
+        serde_json::from_slice(json_part).expect("Failed to parse JSON data");
+
+    println!("Decoded Data: {:?}", decoded_json);
+
+    let original_image_output_path = "extracted_original_image.png";
+    std::fs::write(original_image_output_path, original_image_part)
+        .expect("Failed to save the extracted original image");
+    println!(
+        "Extracted original image saved as: {}",
+        original_image_output_path
+    );
 
     Ok(())
 }
