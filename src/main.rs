@@ -1,11 +1,11 @@
 use tokio::net::UdpSocket;
 use std::fs::File;
-use std::io::{self, Read};
+use std::io::{self, Read, Write};
 use std::time::Duration;
+use std::collections::HashMap;
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
-    // Bind the client socket to a fixed port to maintain a consistent address
     let main_socket = UdpSocket::bind("127.0.0.1:5000").await?; // Use a fixed port for client
     let server_main_addr = "127.0.0.1:8080";
     let image_path = "/home/bavly.remon2004@auc.egy/Downloads/catmeme.jpeg"; // Replace with your image path
@@ -27,9 +27,6 @@ async fn main() -> io::Result<()> {
     println!("Received new port from server: {}", new_port);
 
     // Now continue to use the same `main_socket` for transferring data on the assigned port
-    // Instead of binding a new socket, we reuse `main_socket`
-
-    // Send image chunks with acknowledgment
     let max_packet_size = 1022;
     let mut packet_number: u16 = 0;
 
@@ -38,7 +35,6 @@ async fn main() -> io::Result<()> {
         packet.extend_from_slice(&packet_number.to_be_bytes());
         packet.extend_from_slice(chunk);
 
-        // Retry loop for sending each packet until ACK is received
         loop {
             main_socket.send_to(&packet, &server_addr).await?;
             println!("Sent packet {}", packet_number);
@@ -65,6 +61,40 @@ async fn main() -> io::Result<()> {
     let terminator = [255, 255];
     main_socket.send_to(&terminator, &server_addr).await?;
     println!("All packets sent and end signal sent.");
+
+    // Step 2: Receive the image sent back from the server
+    let mut received_packets = HashMap::new();
+    let mut total_packets = 0;
+
+    loop {
+        let mut buf = [0; 1024 + 2];
+        let (len, _) = main_socket.recv_from(&mut buf).await?;
+
+        if len == 2 && buf[0] == 255 && buf[1] == 255 {
+            println!("End of transmission signal received.");
+            break;
+        }
+
+        let packet_number = u16::from_be_bytes([buf[0], buf[1]]);
+        let data = buf[2..len].to_vec();
+        received_packets.insert(packet_number, data);
+        total_packets = total_packets.max(packet_number + 1);
+
+        main_socket.send_to(&packet_number.to_be_bytes(), &server_addr).await?;
+        println!("Acknowledgment sent for packet {}", packet_number);
+    }
+
+    let mut image_data = Vec::new();
+    for i in 0..total_packets {
+        if let Some(chunk) = received_packets.remove(&i) {
+            image_data.extend(chunk);
+        }
+    }
+
+    // Save the received image as a new file
+    let mut file = File::create("received_image.jpeg")?;
+    file.write_all(&image_data)?;
+    println!("Image saved as 'received_image.jpeg'.");
 
     Ok(())
 }
