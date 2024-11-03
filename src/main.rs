@@ -37,7 +37,7 @@ async fn send_image_with_metrics(image_path: &str) -> io::Result<(Duration, usiz
        let request_data = &[1];
 
        let mut response_buf = [0; 6]; // 4 bytes for IP + 2 bytes for port
-       let timeout_duration = Duration::from_secs(10); // 2 minutes
+       let timeout_duration = Duration::from_secs(30); // 2 minutes
        let start_time = Instant::now();
        let mut my_len= 0;
        let mut my_server_addr = SocketAddr::new("239.255.0.1".parse().unwrap(), 9999);
