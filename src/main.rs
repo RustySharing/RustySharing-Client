@@ -16,12 +16,12 @@ struct EmbeddedData {
 }
 
 const CLIENT_COUNT: usize = 10; // Number of clients
-const IMAGES_PER_CLIENT: usize = 1000; // Images per client
+const IMAGES_PER_CLIENT: usize = 100; // Images per client
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
     // Load all image paths from the specified folder
-    let all_images: Vec<PathBuf> = std::fs::read_dir("path/to/your/image_folder")
+    let all_images: Vec<PathBuf> = std::fs::read_dir("/home/bavly.remon2004@auc.egy/Downloads/jpeg_images/jpeg_images")
         .unwrap()
         .filter_map(|entry| entry.ok().map(|e| e.path()))
         .collect();
@@ -56,7 +56,7 @@ async fn main() -> io::Result<()> {
 async fn simulate_client(client_id: usize, images: Vec<PathBuf>) -> io::Result<()> {
     let client_socket = UdpSocket::bind("0.0.0.0:0").await?;
     client_socket.set_multicast_ttl_v4(1)?;
-    client_socket.send_to(&[1], ("239.255.0.1:9001".parse().unwrap())).await?;
+    client_socket.send_to(&[1], (Ipv4Addr::new(239,255,0,1),9001)).await?;
     println!("Client {} sent multicast image transfer request", client_id);
 
     let mut response_buf = [0; 6];
