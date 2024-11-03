@@ -66,7 +66,7 @@ async fn main() -> io::Result<()> {
 
 // Function to send the image to the specified server address using the same socket
 async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr) -> io::Result<()> {
-    let image_path = "input.jpeg"; // Replace with the path to your image
+    let image_path = "input.png"; // Replace with the path to your image
     let mut file = File::open(image_path)?;
     let mut buf = Vec::new();
 
@@ -147,10 +147,10 @@ async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr) -> io
     }
 
     // Save the received image as a new file
-    let output_path = "received_image.jpeg";
+    let output_path = "received_image.png";
     let mut file = File::create(output_path)?;
     file.write_all(&image_data)?;
-    println!("Image saved as 'received_image.jpeg'.");
+    println!("Image saved as 'received_image.png'.");
 
     let decoded_img = image::open(output_path).expect("Failed to open encoded image");
     let my_decoder = decoder::Decoder::new(decoded_img.to_rgba());
