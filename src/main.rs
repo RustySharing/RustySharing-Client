@@ -34,14 +34,45 @@ async fn send_image_with_metrics(image_path: &str) -> io::Result<(Duration, usiz
        client_socket.set_multicast_ttl_v4(1)?;
    
        // Multicast "send request" to all servers
-       client_socket
-           .send_to(&[1], (multicast_addr, multicast_port))
-           .await?;
-       println!("Sent multicast image transfer request to all servers");
-   
-       // Wait for a response with the specific IP and port from the server with the talking stick
+       let request_data = &[1];
+
        let mut response_buf = [0; 6]; // 4 bytes for IP + 2 bytes for port
-       let (len, server_addr) = client_socket.recv_from(&mut response_buf).await?;
+       let timeout_duration = Duration::from_secs(120); // 2 minutes
+       let start_time = Instant::now();
+       let mut my_len= 0;
+       let mut my_server_addr = SocketAddr::new("239.255.0.1".parse().unwrap(), 9999);
+   
+       loop {
+           // Multicast "send request" to all servers
+           client_socket.send_to(request_data, (multicast_addr, multicast_port)).await?;
+           println!("Sent multicast image transfer request to all servers");
+   
+           // Wait for a response with a timeout
+           let response_result = tokio::time::timeout(timeout_duration, client_socket.recv_from(&mut response_buf)).await;
+   
+           match response_result {
+               Ok(Ok((len, server_addr))) => {
+                   // Successfully received a response
+                   //println!("Received response from {}: {:?}", server_addr, &response_buf[..len]);
+                   my_len = len;
+                   my_server_addr = server_addr;
+                   break; // Exit the loop
+               }
+               Ok(Err(e)) => {
+                   // An error occurred while receiving
+                   eprintln!("Error receiving response: {:?}", e);
+                   break; // Exit the loop if necessary
+               }
+               Err(_) => {
+                   // Timeout occurred
+                   println!("No response received within 2 minutes. Resending request...");
+                   // You can choose to resend or take any other action if needed
+                   // The loop will automatically resend the request
+               }
+           }
+       }
+       let len = my_len;
+       let server_addr = my_server_addr;
    
        println!(
            "Received response of length {} from {}: {:?}",
