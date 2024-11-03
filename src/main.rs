@@ -1,11 +1,17 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use std::fs::File;
+use std::fs::{self, File};
 use std::io::{self, Read, Write};
 use std::net::{Ipv4Addr, SocketAddr};
 use std::time::Duration;
 use steganography::decoder;
 use tokio::net::UdpSocket;
+use tokio::time::{Instant, timeout};
+use std::fs::OpenOptions;
+use std::path::Path;
+use chrono::Utc;
+
+
 
 #[derive(Serialize, Deserialize, Debug)]
 struct EmbeddedData {
@@ -13,60 +19,112 @@ struct EmbeddedData {
     timestamp: String,
 }
 
+// Function to send image and collect metrics
+async fn send_image_with_metrics(image_path: &str) -> io::Result<(Duration, usize)> {
+    let start_time = Instant::now();
+   
+       // Multicast address and port where all servers are listening
+       let multicast_addr: Ipv4Addr = "239.255.0.1".parse().unwrap();
+       let multicast_port = 9001;
+       let client_socket = UdpSocket::bind("0.0.0.0:0").await?; // Bind to any available port
+       client_socket.join_multicast_v4(multicast_addr, Ipv4Addr::UNSPECIFIED)?;
+   
+       // Set multicast TTL to ensure packet can propagate
+       client_socket.set_multicast_ttl_v4(1)?;
+   
+       // Multicast "send request" to all servers
+       client_socket
+           .send_to(&[1], (multicast_addr, multicast_port))
+           .await?;
+       println!("Sent multicast image transfer request to all servers");
+   
+       // Wait for a response with the specific IP and port from the server with the talking stick
+       let mut response_buf = [0; 6]; // 4 bytes for IP + 2 bytes for port
+       let (len, server_addr) = client_socket.recv_from(&mut response_buf).await?;
+   
+       println!(
+           "Received response of length {} from {}: {:?}",
+           len,
+           server_addr,
+           &response_buf[..len]
+       );
+   
+       if len == 6 {
+           let ip = Ipv4Addr::new(
+               response_buf[0],
+               response_buf[1],
+               response_buf[2],
+               response_buf[3],
+           );
+           let port = u16::from_be_bytes([response_buf[4], response_buf[5]]);
+           let server_image_addr = SocketAddr::new(ip.into(), port);
+           println!(
+               "Received response from server with IP {} and port {}",
+               ip, port
+           );
+   
+           // Proceed to send the image to the server on the provided IP and port using the same socket
+           send_image_to_server(&client_socket, server_image_addr,image_path).await?;
+       } else {
+           println!("Invalid response received.");
+       }
+
+        //send_image_to_server(&client_socket, server_image_addr, image_path).await?;
+    
+
+    let duration = start_time.elapsed();
+    Ok((duration, len))
+}
+
+use std::env;
+
 #[tokio::main]
 async fn main() -> io::Result<()> {
-    // Multicast address and port where all servers are listening
-    let multicast_addr: Ipv4Addr = "239.255.0.1".parse().unwrap();
-    let multicast_port = 9001;
-    let client_socket = UdpSocket::bind("0.0.0.0:0").await?; // Bind to any available port
-    client_socket.join_multicast_v4(multicast_addr, Ipv4Addr::UNSPECIFIED)?;
+    // Get the instance ID and image folder from the command-line arguments
+    let args: Vec<String> = env::args().collect();
+    let instance_id = args.get(1).expect("Instance ID not provided");
+    let image_folder = args.get(2).expect("Image folder not provided");
 
-    // Set multicast TTL to ensure packet can propagate
-    client_socket.set_multicast_ttl_v4(1)?;
+    // Debug print statement to confirm each instance's ID and folder
+    println!("Instance {} started processing images from {}", instance_id, image_folder);
 
-    // Multicast "send request" to all servers
-    client_socket
-        .send_to(&[1], (multicast_addr, multicast_port))
-        .await?;
-    println!("Sent multicast image transfer request to all servers");
+    // Create a unique filename with instance ID and timestamp
+    let timestamp = Utc::now().format("%Y%m%d_%H%M%S");
+    let filename = format!("metrics_{}_{}.csv", instance_id, timestamp);
+   
+    // Open the CSV file and write the header
+    let mut file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .open(&filename)?;
+    writeln!(file, "Image Index,Duration (ms),Size (bytes)")?;
 
-    // Wait for a response with the specific IP and port from the server with the talking stick
-    let mut response_buf = [0; 6]; // 4 bytes for IP + 2 bytes for port
-    let (len, server_addr) = client_socket.recv_from(&mut response_buf).await?;
+    // Open the specified images folder
+    let mut dir = tokio::fs::read_dir(image_folder).await?;
+    let mut index = 1;
 
-    println!(
-        "Received response of length {} from {}: {:?}",
-        len,
-        server_addr,
-        &response_buf[..len]
-    );
+    // Iterate over entries asynchronously
+    while let Some(entry) = dir.next_entry().await? {
+        let image_path = entry.path();
+        if image_path.is_file() {
+            let image_path_str = image_path.to_str().unwrap().to_string();
+            let (duration, size) = send_image_with_metrics(&image_path_str).await?;
 
-    if len == 6 {
-        let ip = Ipv4Addr::new(
-            response_buf[0],
-            response_buf[1],
-            response_buf[2],
-            response_buf[3],
-        );
-        let port = u16::from_be_bytes([response_buf[4], response_buf[5]]);
-        let server_image_addr = SocketAddr::new(ip.into(), port);
-        println!(
-            "Received response from server with IP {} and port {}",
-            ip, port
-        );
-
-        // Proceed to send the image to the server on the provided IP and port using the same socket
-        send_image_to_server(&client_socket, server_image_addr).await?;
-    } else {
-        println!("Invalid response received.");
+            // Write each result to the CSV file
+            writeln!(file, "{},{:?},{}", index, duration.as_millis(), size)?;
+            index += 1;
+        }
     }
 
+    println!("Metrics saved to {}", filename);
     Ok(())
 }
 
+
+
 // Function to send the image to the specified server address using the same socket
-async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr) -> io::Result<()> {
-    let image_path = "input.png"; // Replace with the path to your image
+async fn send_image_to_server(socket: &UdpSocket, server_addr: SocketAddr,image_path: &str ) -> io::Result<()> {
+    //let image_path = "input.png"; // Replace with the path to your image
     let mut file = File::open(image_path)?;
     let mut buf = Vec::new();
 
