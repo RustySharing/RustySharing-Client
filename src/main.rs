@@ -1,3 +1,4 @@
+use libc::{printf, PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fs::{self, File};
@@ -76,50 +77,96 @@ async fn send_image_with_metrics(image_path: &str) -> io::Result<(Duration, usiz
     Ok((duration, len))
 }
 
-use std::env;
-
-#[tokio::main]
-async fn main() -> io::Result<()> {
-    // Get the instance ID and image folder from the command-line arguments
-    let args: Vec<String> = env::args().collect();
-    let instance_id = args.get(1).expect("Instance ID not provided");
-    let image_folder = args.get(2).expect("Image folder not provided");
-
-    // Debug print statement to confirm each instance's ID and folder
-    println!("Instance {} started processing images from {}", instance_id, image_folder);
-
-    // Create a unique filename with instance ID and timestamp
-    let timestamp = Utc::now().format("%Y%m%d_%H%M%S");
-    let filename = format!("metrics_{}_{}.csv", instance_id, timestamp);
-   
-    // Open the CSV file and write the header
-    let mut file = OpenOptions::new()
-        .write(true)
-        .create(true)
-        .open(&filename)?;
-    writeln!(file, "Image Index,Duration (ms),Size (bytes)")?;
+async fn process_images_in_thread(
+    image_folder: String,
+    thread_id: usize,
+    file_mutex: Arc<Mutex<std::fs::File>>,
+    semaphore: Arc<Semaphore>,
+) -> io::Result<()> {
+    let _permit = semaphore.acquire().await;
 
     // Open the specified images folder
-    let mut dir = tokio::fs::read_dir(image_folder).await?;
+    let mut dir = read_dir(image_folder).await?;
     let mut index = 1;
 
-    // Iterate over entries asynchronously
     while let Some(entry) = dir.next_entry().await? {
         let image_path = entry.path();
         if image_path.is_file() {
             let image_path_str = image_path.to_str().unwrap().to_string();
-            let (duration, size) = send_image_with_metrics(&image_path_str).await?;
 
-            // Write each result to the CSV file
-            writeln!(file, "{},{:?},{}", index, duration.as_millis(), size)?;
+            // Capture metrics and log results or errors
+            match send_image_with_metrics(&image_path_str).await {
+                Ok((duration, size)) => {
+                    let mut file = file_mutex.lock().unwrap();
+                    writeln!(file, "{},{},{:?},{}", thread_id, index, duration.as_millis(), size)?;
+                }
+                Err(e) => {
+                    let mut file = file_mutex.lock().unwrap();
+                    writeln!(file, "{},{},failed,Error: {:?}", thread_id, index, e)?;
+                }
+            }
             index += 1;
+        }
+    }
+    Ok(())
+}
+
+
+use std::sync::{Arc, Mutex};
+use tokio::fs::read_dir;
+use tokio::sync::Semaphore;
+use tokio::task;
+
+#[tokio::main]
+async fn main() -> io::Result<()> {
+    let image_folder = "/home/bavly.remon2004@auc.egy/Downloads/png_images/10png".to_string();
+
+    println!("Processing images from folder: {}", image_folder);
+
+    let timestamp = Utc::now().format("%Y%m%d_%H%M%S");
+    let filename = format!("metrics_{}.csv", timestamp);
+
+    let file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .append(true)
+        .open(&filename)?;
+
+    if file.metadata()?.len() == 0 {
+        writeln!(&file, "Thread ID,Image Index,Duration (ms),Size (bytes)")?;
+    }
+
+    let file_mutex = Arc::new(Mutex::new(file));
+    let semaphore = Arc::new(Semaphore::new(5));
+
+    let mut tasks = vec![];
+
+    for thread_id in 0..5 {
+        let image_folder_clone = image_folder.clone();
+        let file_mutex_clone = Arc::clone(&file_mutex);
+        let semaphore_clone = Arc::clone(&semaphore);
+
+        let task = task::spawn(process_images_in_thread(
+            image_folder_clone,
+            thread_id,
+            file_mutex_clone,
+            semaphore_clone,
+        ));
+        tasks.push(task);
+        println!("done with thread {}" , thread_id);
+    }
+    
+
+    // Await each task and handle any errors from threads
+    for task in tasks {
+        if let Err(e) = task.await {
+            eprintln!("A thread encountered an error: {:?}", e);
         }
     }
 
     println!("Metrics saved to {}", filename);
     Ok(())
 }
-
 
 
 // Function to send the image to the specified server address using the same socket
