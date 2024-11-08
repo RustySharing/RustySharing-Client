@@ -17,6 +17,7 @@ local-ip = "0.1.0"
 # Protocol buffer implementation
 
 prost = "0.13.3"
+rand = "0.8.5"
 serde = { version = "1.0.214", features = ["derive"] }
 serde_json = "1.0.132"
 stegano-core = "0.5.3"

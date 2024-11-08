@@ -1743,6 +1743,7 @@ dependencies = [
  "libadwaita",
  "local-ip",
  "prost",
+ "rand",
  "serde",
  "serde_json",
  "stegano-core",

@@ -1,6 +1,7 @@
 use image_encoding::image_encoder_client::ImageEncoderClient;
 use image_encoding::EncodedImageRequest;
 use std::fs::File;
+use rand::Rng;
 use steganography::util::{ bytes_to_file, file_to_bytes };
 
 pub mod image_encoding {
@@ -12,8 +13,18 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
   // talk to me if ur my leader * 3
   // whoever responds with i am ur leader, continue communicating with him and pass his socket to the connect
   // select a random and send to it if not doing election
+  // List of server addresses
+  let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
 
-  ImageEncoderClient::connect("http://[::1]:50051").await.unwrap()
+  // Initialize random number generator
+  let mut rng = rand::thread_rng();
+  let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
+
+  // Format the connection string with the chosen server
+  let address = format!("http://{}:50051", server_list[random_number]);
+
+  // Attempt to connect to the server
+  ImageEncoderClient::connect(address).await.unwrap()
 }
 
 use crate::image_decode::decode_image;
