@@ -8,6 +8,11 @@ pub mod image_encoding {
 }
 
 pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
+  // find my leader service
+  // talk to me if ur my leader * 3
+  // whoever responds with i am ur leader, continue communicating with him and pass his socket to the connect
+  // select a random and send to it if not doing election
+
   ImageEncoderClient::connect("http://[::1]:50051").await.unwrap()
 }
 
