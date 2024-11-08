@@ -3,6 +3,7 @@ use image_encoding::EncodedImageRequest;
 use std::fs::File;
 use rand::Rng;
 use steganography::util::{ bytes_to_file, file_to_bytes };
+use crate::utils::get_file_name;
 
 pub mod image_encoding {
   tonic::include_proto!("image_encoding");
@@ -21,7 +22,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
   let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
 
   // Format the connection string with the chosen server
-  let address = format!("http://{}:50051", server_list[random_number]);
+  let address = format!("http://{}:50051", random_number);
 
   // Attempt to connect to the server
   ImageEncoderClient::connect(address).await.unwrap()
@@ -35,7 +36,10 @@ pub async fn image_encode(
   let image_file = File::open(image_path).unwrap();
   let image_data = file_to_bytes(image_file);
 
-  let request = tonic::Request::new(EncodedImageRequest { image_data });
+  let request = tonic::Request::new(EncodedImageRequest {
+    image_data: image_data,
+    file_name: get_file_name(image_path),
+  });
 
   println!("Sending ...");
 
