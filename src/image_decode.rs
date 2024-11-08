@@ -1,57 +1,39 @@
-use image::{ DynamicImage, GenericImageView };
-use serde::{ Serialize, Deserialize };
-use steganography:: decoder;
-use std::str;
+use serde::{Deserialize, Serialize};
+use std::{fs, path::Path, str};
+use stegano_core::{commands::unveil, CodecOptions};
 
 #[derive(Serialize, Deserialize, Debug)]
 struct EmbeddedMetaData {
-  timestamp: String,
-  view_count: i32,
+    timestamp: String,
+    view_count: i32,
 }
 
-use crate::utils::get_absolute_path;
+// use crate::utils::get_absolute_path;
+fn create_directory_if_not_exists(dir_path: &str) -> std::io::Result<()> {
+    // Convert the dir_path to a Path
+    let path = Path::new(dir_path);
 
-pub fn load_image_from_file(file_path: &str) -> Result<DynamicImage, String> {
-  // if the file path is relative, convert it to an absolute path
-  // check if path begins with '/' or '~'
-  let file_path = if file_path.starts_with('/') || file_path.starts_with('~') {
-    file_path.to_string()
-  } else {
-    get_absolute_path(file_path)
-  };
+    // Create the directory (and any parent directories) if it doesn't exist
+    fs::create_dir_all(path)?;
 
-  let img = image::open(file_path);
-  match img {
-    Ok(img) => Ok(img),
-    Err(e) => Err(format!("Error loading image: {}", e)),
-  }
+    println!("Directory '{}' created or already exists.", dir_path);
+
+    Ok(())
 }
 
-pub fn decode_image(image: DynamicImage) -> Result<(DynamicImage, EmbeddedMetaData), String> {
+pub fn decode_image(encoded_image_path: String, extraction_path: String) -> Result<String, String> {
+    //let extraction_path = "./extracted"; // Path to save extracted image
+    if let Err(e) = create_directory_if_not_exists(&extraction_path) {
+        eprintln!("Error creating directory: {}", e);
+    }
+    // Extract the hidden file from the image
+    let _ = unveil(
+        Path::new(&encoded_image_path),
+        Path::new(&extraction_path),
+        &CodecOptions::default(),
+    );
 
-  let my_decoder = decoder::Decoder::new(image.to_rgba());
-  let decoded_data = my_decoder.decode_alpha();
+    // println!("Extracted file saved to: {}", extraction_path);
 
-  // Find the position of the JSON content
-  let start = decoded_data
-    .iter()
-    .position(|&b| b == b'{')
-    .expect("Opening brace not found");
-  let end = decoded_data
-    .iter()
-    .position(|&b| b == b'}')
-    .expect("Closing brace not found");
-
-  let json_part = &decoded_data[start..=end]; // Include the closing brace
-  let original_image_part = &decoded_data[end + 1..]; // Skip past the closing brace
-
-  let decoded_json: EmbeddedMetaData = serde_json
-    ::from_slice(json_part)
-    .expect("Failed to parse JSON data");
-
-  let original_image = image::ImageBuffer
-    ::from_vec(image.width(), image.height(), original_image_part.to_vec())
-    .expect("Failed to create image buffer");
-
-  Ok((DynamicImage::ImageRgba8(original_image), decoded_json))
+    Ok(format!("Extracted file saved to: {}", extraction_path))
 }

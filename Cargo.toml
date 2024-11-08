@@ -13,11 +13,13 @@ tonic-build = "0.12.3"
 adw = { version = "0.7.0", package = "libadwaita", features = ["v1_5"] }
 gtk = { version = "0.9.2", package = "gtk4", features = ["v4_12"] }
 image = "0.21.3"
+local-ip = "0.1.0"
 # Protocol buffer implementation
 
 prost = "0.13.3"
 serde = { version = "1.0.214", features = ["derive"] }
 serde_json = "1.0.132"
+stegano-core = "0.5.3"
 steganography = "1.0.2"
 tokio = {version = "1.41.0", features=["macros","rt-multi-thread"]}
 
