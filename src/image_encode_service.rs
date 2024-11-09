@@ -1,31 +1,52 @@
 use image_encoding::image_encoder_client::ImageEncoderClient;
 use image_encoding::EncodedImageRequest;
+use leader_provider::leader_provider_client::LeaderProviderClient;
 use std::fs::File;
 use rand::Rng;
 use steganography::util::{ bytes_to_file, file_to_bytes };
 use crate::utils::get_file_name;
+use std::thread;
 
 pub mod image_encoding {
   tonic::include_proto!("image_encoding");
 }
 
+pub mod leader_provider {
+  tonic::include_proto!("leader_provider");
+}
+
+pub async fn connect() -> LeaderProviderClient<tonic::transport::Channel> {}
+
 pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
-  // find my leader service
-  // talk to me if ur my leader * 3
-  // whoever responds with i am ur leader, continue communicating with him and pass his socket to the connect
-  // select a random and send to it if not doing election
-  // List of server addresses
+  let args: Vec<String> = std::env::args().collect();
+
+  let do_random_selection = args.iter().any(|arg| arg == "--random-selection");
+  // random server selection
+  // TODO: replaced with querying service directory
   let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
 
-  // Initialize random number generator
-  let mut rng = rand::thread_rng();
-  let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
+  if do_random_selection {
+    // Initialize random number generator
+    let mut rng = rand::thread_rng();
+    let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
 
-  // Format the connection string with the chosen server
-  let address = format!("http://{}:50051", random_number);
+    // Format the connection string with the chosen server
+    let address = format!("http://{}:50051", server_list[random_number]);
 
-  // Attempt to connect to the server
-  ImageEncoderClient::connect(address).await.unwrap()
+    // Attempt to connect to the server
+    ImageEncoderClient::connect(address).await.unwrap();
+  }
+
+  // connect to all servers on different threads
+  for server in server_list {
+    thread::spawn(|| {
+      let address = format!("http://{}:50051", server);
+      LeaderProviderClient::connect(address).await.unwrap();
+    });
+  }
+
+  // multicast to server list, 50052 will be port of leader election
+  let address = format!("http://{}:50052".server_list[random_number]);
 }
 
 use crate::image_decode::decode_image;
