@@ -3,3 +3,4 @@ target/
 */test/images/
 encoded_image.png
 extracted/input.jpeg
+client_results.txt

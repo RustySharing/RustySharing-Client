@@ -15,7 +15,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
     // whoever responds with i am ur leader, continue communicating with him and pass his socket to the connect
     // select a random and send to it if not doing election
     // List of server addresses
-    let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
+    let server_list: Vec<&str> = vec!["10.7.17.128", "10.7.16.54"];
 
     // Initialize random number generator
     let mut rng = rand::thread_rng();
