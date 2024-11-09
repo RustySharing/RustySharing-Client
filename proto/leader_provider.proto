@@ -2,13 +2,12 @@ syntax = "proto3";
 package leader_provider;
 
 service LeaderProvider {
-  rpc ProvideLeader (LeaderProviderRequest) returns (LeaderProviderResponse);
+  rpc GetLeader (LeaderProviderEmptyRequest) returns (LeaderProviderResponse);
 }
 
-message LeaderProviderRequest {
-  string client_socket = 1
+message LeaderProviderEmptyRequest {
 }
 
 message LeaderProviderResponse {
-  string leader_socket = 1
+  string leader_socket = 1;
 }
