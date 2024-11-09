@@ -20,13 +20,32 @@ pub mod leader_provider {
   tonic::include_proto!("leader_provider");
 }
 
-async fn get_leader_provider_client(
-  server_list: Vec<&str>
-) -> Option<LeaderProviderClient<tonic::transport::Channel>> {
-  for _ in 0..MAX_SERVICE_ATTEMPTS {
-    for server in &server_list {
-      let socket = format!("http://{}:50051", server);
+use rand::prelude::*;
+use rand::rngs::StdRng;
+use rand::SeedableRng;
+use std::time::{SystemTime, UNIX_EPOCH};
 
+async fn get_leader_provider_client(
+    server_list: Vec<&str>
+) -> Option<LeaderProviderClient<tonic::transport::Channel>> {
+
+  for _ in 0..MAX_SERVICE_ATTEMPTS {
+    let start = SystemTime::now();
+    let duration = start.duration_since(UNIX_EPOCH)
+        .expect("Time went backwards");
+    
+    // Use the current time in nanoseconds as the seed (you can also use seconds or milliseconds)
+    let seed = duration.as_nanos() as u64;  // Convert nanoseconds to u64
+
+    // Create a seedable RNG from the system time
+    let mut rng = StdRng::seed_from_u64(seed);
+    let mut random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
+    let prev_random_number = rng.gen_range(0..server_list.len());
+    while random_number != prev_random_number {
+      random_number = rng.gen_range(0..server_list.len());
+    }
+    for server in &server_list {
+      let socket = format!("http://{}:50051", server_list[random_number]);
       match LeaderProviderClient::connect(socket.clone()).await {
         Ok(client) => {
           println!("Connected to a provider at: {}", socket.clone());
@@ -58,8 +77,8 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
   let do_random_selection = args.iter().any(|arg| arg == "--random-selection");
 
   // TODO: server_list replaced with querying service directory
-  // let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
-  let server_list: Vec<&str> = vec!["[::1]"];
+  let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
+  //let server_list: Vec<&str> = vec!["[::1]"];
 
   let mut rng = rand::thread_rng();
   let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
@@ -75,7 +94,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
   });
   let request = tonic::Request::new(leader_provider::LeaderProviderEmptyRequest {});
   let response = leader_provider_client.get_leader(request).await.unwrap();
-  let leader_socket = format!("http://{}:50051", response.get_ref().leader_socket);
+  let leader_socket = format!("http://{}", response.get_ref().leader_socket);
   println!("Leader socket: {}", leader_socket);
   ImageEncoderClient::connect(leader_socket).await.unwrap()
 }
