@@ -30,7 +30,7 @@ async fn get_leader_provider_client(
       match LeaderProviderClient::connect(socket.clone()).await {
         Ok(client) => {
           println!("Connected to a provider at: {}", socket.clone());
-          Some(client);
+          return Some(client);
         }
         Err(e) => {
           println!("Failed to connect to a provider server at: {}: {}", socket, e);
@@ -58,7 +58,8 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
   let do_random_selection = args.iter().any(|arg| arg == "--random-selection");
 
   // TODO: server_list replaced with querying service directory
-  let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
+  // let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
+  let server_list: Vec<&str> = vec!["[::1]"];
 
   let mut rng = rand::thread_rng();
   let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
@@ -75,6 +76,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
   let request = tonic::Request::new(leader_provider::LeaderProviderEmptyRequest {});
   let response = leader_provider_client.get_leader(request).await.unwrap();
   let leader_socket = format!("http://{}:50051", response.get_ref().leader_socket);
+  println!("Leader socket: {}", leader_socket);
   ImageEncoderClient::connect(leader_socket).await.unwrap()
 }
 
