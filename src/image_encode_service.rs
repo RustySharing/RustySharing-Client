@@ -1,15 +1,14 @@
 use crate::utils::get_file_name;
 use image_encoding::image_encoder_client::ImageEncoderClient;
 use image_encoding::EncodedImageRequest;
-use rand::Rng;
-use std::fs::File;
-use rand::Rng;
-use steganography::util::{ bytes_to_file, file_to_bytes };
+use leader_provider::leader_provider_client::LeaderProviderClient;
 use rand::rngs::StdRng;
+use rand::Rng;
 use rand::SeedableRng;
-use std::time::{ SystemTime, UNIX_EPOCH };
-use crate::utils::get_file_name;
+use std::fs::File;
 use std::thread;
+use std::time::{SystemTime, UNIX_EPOCH};
+use steganography::util::{bytes_to_file, file_to_bytes};
 
 // TODO: put these in a config file or environment variables
 const MAX_SERVICE_ATTEMPTS: u32 = 3;
@@ -23,124 +22,138 @@ pub mod image_encoding {
 }
 
 pub mod leader_provider {
-  tonic::include_proto!("leader_provider");
+    tonic::include_proto!("leader_provider");
 }
 
 async fn get_leader_provider_client(
-  server_list: Vec<&str>
+    server_list: Vec<&str>,
 ) -> Option<LeaderProviderClient<tonic::transport::Channel>> {
-  for _ in 0..MAX_SERVICE_ATTEMPTS {
-    let start = SystemTime::now();
-    let duration = start.duration_since(UNIX_EPOCH).expect("Time went backwards");
+    for _ in 0..MAX_SERVICE_ATTEMPTS {
+        let start = SystemTime::now();
+        let duration = start
+            .duration_since(UNIX_EPOCH)
+            .expect("Time went backwards");
 
-    // Use the current time in nanoseconds as the seed (you can also use seconds or milliseconds)
-    let seed = duration.as_nanos() as u64; // Convert nanoseconds to u64
+        // Use the current time in nanoseconds as the seed (you can also use seconds or milliseconds)
+        let seed = duration.as_nanos() as u64; // Convert nanoseconds to u64
 
-    // Create a seedable RNG from the system time
-    let mut rng = StdRng::seed_from_u64(seed);
-    let mut random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
-    let prev_random_number = rng.gen_range(0..server_list.len());
-    while random_number != prev_random_number {
-      random_number = rng.gen_range(0..server_list.len());
-    }
-    for i in 0..server_list.len() {
-      let socket = format!("http://{}:50051", server_list[(random_number + i) % server_list.len()]);
-      match LeaderProviderClient::connect(socket.clone()).await {
-        Ok(client) => {
-          println!("Connected to a provider at: {}", socket.clone());
-          return Some(client);
+        // Create a seedable RNG from the system time
+        let mut rng = StdRng::seed_from_u64(seed);
+        let mut random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
+        let prev_random_number = rng.gen_range(0..server_list.len());
+        while random_number != prev_random_number {
+            random_number = rng.gen_range(0..server_list.len());
         }
-        Err(e) => {
-          println!("Failed to connect to a provider server at: {}: {}", socket, e);
+        for i in 0..server_list.len() {
+            let socket = format!(
+                "http://{}:50051",
+                server_list[(random_number + i) % server_list.len()]
+            );
+            match LeaderProviderClient::connect(socket.clone()).await {
+                Ok(client) => {
+                    println!("Connected to a provider at: {}", socket.clone());
+                    return Some(client);
+                }
+                Err(e) => {
+                    println!(
+                        "Failed to connect to a provider server at: {}: {}",
+                        socket, e
+                    );
+                }
+            }
         }
-      }
+
+        println!("All servers failed waiting for 50ms then retrying");
+        thread::sleep(std::time::Duration::from_millis(50));
     }
 
-    println!("All servers failed waiting for 50ms then retrying");
-    thread::sleep(std::time::Duration::from_millis(50));
-  }
-
-  None
+    None
 }
 
 async fn persist_leader_provider_client(
-  mut leader_provider_client: LeaderProviderClient<tonic::transport::Channel>,
-  max_retries: u32
+    mut leader_provider_client: LeaderProviderClient<tonic::transport::Channel>,
+    max_retries: u32,
 ) -> Option<String> {
-  let request_data = leader_provider::LeaderProviderEmptyRequest {};
-  let mut retry = 0;
+    let request_data = leader_provider::LeaderProviderEmptyRequest {};
+    let mut retry = 0;
 
-  loop {
-    let request = tonic::Request::new(request_data.clone());
-    match leader_provider_client.get_leader(request).await {
-      Ok(response) => {
-        return Some(response.get_ref().leader_socket.to_string());
-      }
-      Err(e) => {
-        println!("Failed to get leader from the leader provider | Retrying |  Error: {}", e);
-        if retry >= max_retries {
-          return None;
+    loop {
+        let request = tonic::Request::new(request_data.clone());
+        match leader_provider_client.get_leader(request).await {
+            Ok(response) => {
+                return Some(response.get_ref().leader_socket.to_string());
+            }
+            Err(e) => {
+                println!(
+                    "Failed to get leader from the leader provider | Retrying |  Error: {}",
+                    e
+                );
+                if retry >= max_retries {
+                    return None;
+                }
+                retry += 1;
+            }
         }
-        retry += 1;
-      }
     }
-  }
 }
 
 async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
-  for _ in 0..MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS {
-    let leader_provider_client = get_leader_provider_client(server_list.clone()).await?;
-    let leader_socket = persist_leader_provider_client(leader_provider_client, 0).await?;
-    return Some(leader_socket);
-  }
+    for _ in 0..MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS {
+        let leader_provider_client = get_leader_provider_client(server_list.clone()).await?;
+        let leader_socket = persist_leader_provider_client(leader_provider_client, 0).await?;
+        return Some(leader_socket);
+    }
 
-  None
+    None
 }
 
 pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
-  let args: Vec<String> = std::env::args().collect();
+    let args: Vec<String> = std::env::args().collect();
 
-  let do_random_selection = args.iter().any(|arg| arg == "--random-selection");
+    let do_random_selection = args.iter().any(|arg| arg == "--random-selection");
 
-  // TODO: server_list replaced with querying service directory
-  let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
+    // TODO: server_list replaced with querying service directory
+    let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
 
-  let mut rng = rand::thread_rng();
-  let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
-  let random_socket = format!("http://{}:50051", server_list[random_number]);
-
-    // Attempt to connect to the server
-    return ImageEncoderClient::connect(random_socket).await.unwrap();
-  }
-
-  let mut leader_provider_client = get_leader_provider_client(server_list).await.unwrap_or_else(|| {
-    println!("Failed to connect to any leader provider server");
-    std::process::exit(1);
-  });
-
-  let response = persist_leader_provider_client(leader_provider_client, 0).await.unwrap();
-  let leader_socket = format!("http://{}", response);
-  println!("Leader socket: {}", leader_socket);
-  let mut image_encode_client = None;
-
-  for _ in 0..MAX_LEADER_ATTEMPTS {
-    match ImageEncoderClient::connect(leader_socket.clone()).await {
-      Ok(client) => {
-        image_encode_client = Some(client);
-        break;
-      }
-      Err(e) => {
-        println!(
-          "Failed to connect to leader server at: {} | Error: {}, Exiting Gracefully",
-          leader_socket,
-          e
-        );
-        std::process::exit(1);
-      }
+    let mut rng = rand::thread_rng();
+    let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
+    let random_socket = format!("http://{}:50051", server_list[random_number]);
+    if do_random_selection {
+        // Attempt to connect to the server
+        return ImageEncoderClient::connect(random_socket).await.unwrap();
     }
-  }
 
-  image_encode_client.unwrap()
+    let mut leader_provider_client = get_leader_provider_client(server_list)
+        .await
+        .unwrap_or_else(|| {
+            println!("Failed to connect to any leader provider server");
+            std::process::exit(1);
+        });
+
+    let response = persist_leader_provider_client(leader_provider_client, 0)
+        .await
+        .unwrap();
+    let leader_socket = format!("http://{}", response);
+    println!("Leader socket: {}", leader_socket);
+    let mut image_encode_client = None;
+
+    for _ in 0..MAX_LEADER_ATTEMPTS {
+        match ImageEncoderClient::connect(leader_socket.clone()).await {
+            Ok(client) => {
+                image_encode_client = Some(client);
+                break;
+            }
+            Err(e) => {
+                println!(
+                    "Failed to connect to leader server at: {} | Error: {}, Exiting Gracefully",
+                    leader_socket, e
+                );
+                std::process::exit(1);
+            }
+        }
+    }
+
+    image_encode_client.unwrap()
 }
 
 use crate::image_decode::decode_image;
@@ -151,29 +164,29 @@ pub async fn image_encode(
     let image_file = File::open(image_path).unwrap();
     let image_data = file_to_bytes(image_file);
 
-  let request = tonic::Request::new(EncodedImageRequest {
-    image_data: image_data.clone(),
-    file_name: get_file_name(image_path).clone(),
-  });
+    let request = tonic::Request::new(EncodedImageRequest {
+        image_data: image_data.clone(),
+        file_name: get_file_name(image_path).clone(),
+    });
 
     println!("Sending ...");
 
-  let response = match client.image_encode(request).await {
-    Ok(response) => {
-      //println!("Response: {:?}", response);
-      response
-    }
-    Err(e) => {
-      println!("Failed to encode image: {}", e);
-      let mut new_client = connect().await;
+    let response = match client.image_encode(request).await {
+        Ok(response) => {
+            //println!("Response: {:?}", response);
+            response
+        }
+        Err(e) => {
+            println!("Failed to encode image: {}", e);
+            let mut new_client = connect().await;
 
-      let new_request = tonic::Request::new(EncodedImageRequest {
-        image_data: image_data,
-        file_name: get_file_name(image_path),
-      });
-      new_client.image_encode(new_request).await.unwrap()
-    }
-  };
+            let new_request = tonic::Request::new(EncodedImageRequest {
+                image_data: image_data,
+                file_name: get_file_name(image_path),
+            });
+            new_client.image_encode(new_request).await.unwrap()
+        }
+    };
 
     println!("Sent!");
 
