@@ -42,10 +42,13 @@ run_client() {
     echo "Run: $i - $RESULT - Leader socket: $LEADER_SOCKET - Time taken: $ELAPSED_TIME seconds" >> "$OUTPUT_FILE"
 }
 
-# Run all clients in parallel and capture their results
+# Run all clients with a delay between each run
 for ((i = 1; i <= NUM_RUNS; i++)); do
-    # Start each client in the background, capturing the output and timing
-    (run_client) & # Parenthesis are used to group the command and run it in a subshell
+    # Run each client in the background, but add a delay before starting the next one
+    run_client &
+    
+    # Delay (in seconds) between each client run (adjust the time as needed)
+    sleep 3  # This will add a 2-second delay between starting each client
 done
 
 # Wait for all background jobs to finish
