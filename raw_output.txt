@@ -1,0 +1,4201 @@
+========== Run 2 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 1 ==========
+   Compiling rpc_client v0.1.0 (/home/bavly.remon2004@auc.egy/Desktop/RustySharing-Client)
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.38s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 3 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 6 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 4 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 5 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 7 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 8 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 11 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 9 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 12 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 10 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.09s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 14 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 13 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 19 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 17 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 15 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 20 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 16 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 24 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 21 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 18 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 22 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 23 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 30 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 31 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 25 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.09s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 34 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 27 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 28 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 26 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 41 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 33 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 29 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 35 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 45 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 32 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 38 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 48 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 39 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 49 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 42 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 36 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 51 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 44 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 47 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 37 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 55 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 52 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 40 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 53 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 64 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 43 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 57 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 67 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 46 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 68 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 59 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 69 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 50 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 61 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 75 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 54 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.09s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 56 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 78 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 58 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 80 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 60 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 71 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 62 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 72 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 63 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 83 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 65 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 74 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 66 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 77 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 85 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 82 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 87 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 88 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 84 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 70 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.09s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 86 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.09s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 73 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 92 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 93 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 90 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 76 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 91 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.54:50051
+Leader socket: http://10.7.16.54:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 97 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 100 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 79 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 81 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 89 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 95 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 94 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 96 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 98 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
+========== Run 99 ==========
+warning: variable does not need to be mutable
+   --> src/image_encode_service.rs:126:9
+    |
+126 |     let mut leader_provider_client = get_leader_provider_client(server_list)
+    |         ----^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:16:7
+   |
+16 | const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS` is never used
+  --> src/image_encode_service.rs:17:7
+   |
+17 | const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `persist_on_service_and_leader_provider` is never used
+   --> src/image_encode_service.rs:100:10
+    |
+100 | async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `rpc_client` (lib) generated 4 warnings (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.17.128:50051
+Leader socket: http://10.7.17.128:50051
+Sending ...
+Sent!
+Directory './extracted' created or already exists.
+Extracted file saved to: ./extracted
+RESPONSE="Extracted file saved to: ./extracted"
+============================
