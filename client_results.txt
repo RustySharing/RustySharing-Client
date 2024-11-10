@@ -1,6 +1,0 @@
-Run: 2 - FAILURE - Leader socket: http://10.7.16.11:50051 - Time taken: 4.208420778 seconds
-Run: 1 - FAILURE - Leader socket: http://10.7.16.11:50051 - Time taken: 6.213375447 seconds
-Run: 3 - FAILURE - Leader socket:  - Time taken: 2.203234116 seconds
-Run: 4 - FAILURE - Leader socket:  - Time taken: .258736914 seconds
-Run: 5 - FAILURE - Leader socket:  - Time taken: .262142648 seconds
-Run: 6 - FAILURE - Leader socket:  - Time taken: .269990544 seconds
