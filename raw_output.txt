@@ -1,0 +1,148 @@
+========== Run 2 ==========
+warning: unused variable: `server`
+  --> src/image_encode_service.rs:47:9
+   |
+47 |     for server in &server_list {
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_server`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: `rpc_client` (lib) generated 1 warning (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+========== Run 1 ==========
+All servers failed waiting for 50ms then retrying
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+thread 'main' panicked at /home/bavly.remon2004@auc.egy/Desktop/RustySharing-Client/src/image_encode_service.rs:117:53:
+called `Result::unwrap()` on an `Err` value: Status { code: Unknown, message: "transport error", source: Some(tonic::transport::Error(Transport, hyper::Error(Io, Custom { kind: BrokenPipe, error: "stream closed because of a broken pipe" }))) }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+============================
+   Compiling rpc_client v0.1.0 (/home/bavly.remon2004@auc.egy/Desktop/RustySharing-Client)
+warning: unused variable: `server`
+  --> src/image_encode_service.rs:47:9
+   |
+47 |     for server in &server_list {
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_server`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: `rpc_client` (lib) generated 1 warning (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.20s
+     Running `target/debug/rpc_client`
+Connected to a provider at: http://10.7.16.11:50051
+Leader socket: http://10.7.16.11:50051
+Sending ...
+thread 'main' panicked at /home/bavly.remon2004@auc.egy/Desktop/RustySharing-Client/src/image_encode_service.rs:117:53:
+called `Result::unwrap()` on an `Err` value: Status { code: Unknown, message: "h2 protocol error: error reading a body from connection", metadata: MetadataMap { headers: {"content-type": "application/grpc", "date": "Sun, 10 Nov 2024 00:28:01 GMT"} }, source: Some(hyper::Error(Body, Error { kind: Io(Kind(ConnectionReset)) })) }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+============================
+========== Run 3 ==========
+warning: unused variable: `server`
+  --> src/image_encode_service.rs:47:9
+   |
+47 |     for server in &server_list {
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_server`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: `rpc_client` (lib) generated 1 warning (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+All servers failed waiting for 50ms then retrying
+Connected to a provider at: http://10.7.16.11:50051
+thread 'main' panicked at /home/bavly.remon2004@auc.egy/Desktop/RustySharing-Client/src/image_encode_service.rs:96:67:
+called `Result::unwrap()` on an `Err` value: Status { code: Unknown, message: "transport error", source: Some(tonic::transport::Error(Transport, hyper::Error(Io, Kind(ConnectionReset)))) }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+============================
+========== Run 4 ==========
+warning: unused variable: `server`
+  --> src/image_encode_service.rs:47:9
+   |
+47 |     for server in &server_list {
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_server`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: `rpc_client` (lib) generated 1 warning (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.07s
+     Running `target/debug/rpc_client`
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+All servers failed waiting for 50ms then retrying
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+All servers failed waiting for 50ms then retrying
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+All servers failed waiting for 50ms then retrying
+thread 'main' panicked at /home/bavly.remon2004@auc.egy/Desktop/RustySharing-Client/src/image_encode_service.rs:93:5:
+Failed to connect to any leader provider server
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+============================
+========== Run 5 ==========
+warning: unused variable: `server`
+  --> src/image_encode_service.rs:47:9
+   |
+47 |     for server in &server_list {
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_server`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: `rpc_client` (lib) generated 1 warning (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.08s
+     Running `target/debug/rpc_client`
+Failed to connect to a provider server at: http://10.7.16.11:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.11:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.11:50051: transport error
+All servers failed waiting for 50ms then retrying
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+All servers failed waiting for 50ms then retrying
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+Failed to connect to a provider server at: http://10.7.17.128:50051: transport error
+All servers failed waiting for 50ms then retrying
+thread 'main' panicked at /home/bavly.remon2004@auc.egy/Desktop/RustySharing-Client/src/image_encode_service.rs:93:5:
+Failed to connect to any leader provider server
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+============================
+========== Run 6 ==========
+warning: unused variable: `server`
+  --> src/image_encode_service.rs:47:9
+   |
+47 |     for server in &server_list {
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_server`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: `rpc_client` (lib) generated 1 warning (run `cargo fix --lib -p rpc_client` to apply 1 suggestion)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.09s
+     Running `target/debug/rpc_client`
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+All servers failed waiting for 50ms then retrying
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.54:50051: transport error
+All servers failed waiting for 50ms then retrying
+Failed to connect to a provider server at: http://10.7.16.11:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.11:50051: transport error
+Failed to connect to a provider server at: http://10.7.16.11:50051: transport error
+All servers failed waiting for 50ms then retrying
+thread 'main' panicked at /home/bavly.remon2004@auc.egy/Desktop/RustySharing-Client/src/image_encode_service.rs:93:5:
+Failed to connect to any leader provider server
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+============================

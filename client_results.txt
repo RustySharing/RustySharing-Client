@@ -1,10 +1,6 @@
-Run: 1 - SUCCESS - Leader socket: http://10.7.16.11:50051 - Time taken: 12.681218197 seconds
-Run: 5 - SUCCESS - Leader socket: http://10.7.16.11:50051 - Time taken: 17.304208307 seconds
-Run: 4 - SUCCESS - Leader socket: http://10.7.16.54:50051 - Time taken: 18.137971342 seconds
-Run: 9 - SUCCESS - Leader socket: http://10.7.17.128:50051 - Time taken: 20.920062363 seconds
-Run: 3 - SUCCESS - Leader socket: http://10.7.16.11:50051 - Time taken: 21.869257710 seconds
-Run: 7 - SUCCESS - Leader socket: http://10.7.16.54:50051 - Time taken: 22.778920599 seconds
-Run: 6 - SUCCESS - Leader socket: http://10.7.16.54:50051 - Time taken: 27.409039355 seconds
-Run: 2 - SUCCESS - Leader socket: http://10.7.17.128:50051 - Time taken: 37.759528803 seconds
-Run: 8 - SUCCESS - Leader socket: http://10.7.17.128:50051 - Time taken: 43.211635944 seconds
-Run: 10 - SUCCESS - Leader socket: http://10.7.17.128:50051 - Time taken: 48.723980565 seconds
+Run: 2 - FAILURE - Leader socket: http://10.7.16.11:50051 - Time taken: 4.208420778 seconds
+Run: 1 - FAILURE - Leader socket: http://10.7.16.11:50051 - Time taken: 6.213375447 seconds
+Run: 3 - FAILURE - Leader socket:  - Time taken: 2.203234116 seconds
+Run: 4 - FAILURE - Leader socket:  - Time taken: .258736914 seconds
+Run: 5 - FAILURE - Leader socket:  - Time taken: .262142648 seconds
+Run: 6 - FAILURE - Leader socket:  - Time taken: .269990544 seconds
