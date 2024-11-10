@@ -3,15 +3,18 @@ import re
 import glob
 import numpy as np
 
-# List all files with a certain pattern, e.g., 'run_data_*.txt'
-file_paths = glob.glob('client_results_*.txt')
+# List all files for both patterns: 'client_results_*.txt' and 'no_balancing_*.txt'
+client_files = glob.glob('client_results_*.txt')
+no_balancing_files = glob.glob('no_balancing_*.txt')
 
-# Initialize lists to hold combined data
-all_runs = []
-all_times = []
+# Initialize lists to hold combined data for each type
+client_runs = []
+client_times = []
+no_balancing_runs = []
+no_balancing_times = []
 
-# Loop over each file to extract data
-for file_path in file_paths:
+# Process 'client_results_*.txt' files
+for file_path in client_files:
     with open(file_path, 'r') as file:
         for line in file:
             match = re.search(r'Run: (\d+) - SUCCESS - .* - Time taken: ([\d.]+) seconds', line)
@@ -19,23 +22,42 @@ for file_path in file_paths:
                 run = int(match.group(1))
                 time_taken = float(match.group(2))
                 
-                # Append data to combined lists
-                all_runs.append(run)
-                all_times.append(time_taken)
+                # Append data to client-specific lists
+                client_runs.append(run)
+                client_times.append(time_taken)
 
-# Calculate the line of best fit using all combined data
-coeffs = np.polyfit(all_runs, all_times, 1)  # Fit a line of degree 1 (linear)
-poly = np.poly1d(coeffs)
+# Process 'no_balancing_*.txt' files
+for file_path in no_balancing_files:
+    with open(file_path, 'r') as file:
+        for line in file:
+            match = re.search(r'Run: (\d+) - SUCCESS - .* - Time taken: ([\d.]+) seconds', line)
+            if match:
+                run = int(match.group(1))
+                time_taken = float(match.group(2))
+                
+                # Append data to no-balancing-specific lists
+                no_balancing_runs.append(run)
+                no_balancing_times.append(time_taken)
 
-# Generate the values for the line of best fit
-fit_line = poly(np.array(all_runs))
+# Calculate the line of best fit for 'client_results_*'
+client_coeffs = np.polyfit(client_runs, client_times, 1)
+client_poly = np.poly1d(client_coeffs)
+client_fit_line = client_poly(np.array(client_runs))
 
-# Plot the combined data points and the line of best fit
-plt.scatter(all_runs, all_times, label="Data Points", color='blue', alpha=0.5)  # Scatter plot for all data points
-plt.plot(all_runs, fit_line, label="Best Fit Line", color='red', linewidth=2)  # Line of best fit
+# Calculate the line of best fit for 'no_balancing_*'
+no_balancing_coeffs = np.polyfit(no_balancing_runs, no_balancing_times, 1)
+no_balancing_poly = np.poly1d(no_balancing_coeffs)
+no_balancing_fit_line = no_balancing_poly(np.array(no_balancing_runs))
+
+# Plot both datasets with their respective best-fit lines on the same plot
+plt.scatter(client_runs, client_times, label="Client Results Data", color='blue', alpha=0.5)
+plt.plot(client_runs, client_fit_line, label="Client Results Best Fit", color='blue', linewidth=2)
+
+plt.scatter(no_balancing_runs, no_balancing_times, label="No Balancing Data", color='green', alpha=0.5)
+plt.plot(no_balancing_runs, no_balancing_fit_line, label="No Balancing Best Fit", color='green', linewidth=2)
 
 # Customize plot
-plt.title("Combined Time Taken per Run with Line of Best Fit")
+plt.title("Time Taken per Run: Client Results vs No Balancing with Line of Best Fit")
 plt.xlabel("Run Number")
 plt.ylabel("Time Taken (seconds)")
 plt.legend()
