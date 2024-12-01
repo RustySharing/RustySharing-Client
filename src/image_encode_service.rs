@@ -6,6 +6,7 @@ use rand::rngs::StdRng;
 use rand::Rng;
 use rand::SeedableRng;
 use std::fs::File;
+use std::net::SocketAddr;
 use std::thread;
 use std::time::{SystemTime, UNIX_EPOCH};
 use steganography::util::{bytes_to_file, file_to_bytes};
@@ -161,6 +162,7 @@ pub async fn image_encode(
     client: &mut ImageEncoderClient<tonic::transport::Channel>,
     image_path: &str,
     user_name: &str,
+    addr: SocketAddr,
 ) -> String {
     let image_file = File::open(image_path).unwrap();
     let image_data = file_to_bytes(image_file);
@@ -169,6 +171,7 @@ pub async fn image_encode(
         image_data: image_data.clone(),
         file_name: get_file_name(image_path).clone(),
         user_name: user_name.to_string(),
+        client_server_socket: addr.to_string(),
     });
 
     println!("Sending ...");
@@ -186,6 +189,7 @@ pub async fn image_encode(
                 image_data,
                 file_name: get_file_name(image_path),
                 user_name: user_name.to_string(),
+                client_server_socket: addr.to_string(),
             });
             new_client.image_encode(new_request).await.unwrap()
         }
@@ -202,12 +206,8 @@ pub async fn image_encode(
 
     bytes_to_file(encoded_data, &file);
 
-    let extraction_path = "./extracted";
-    let decode_return = decode_image(
-        output_file_path.to_string(),
-        extraction_path.to_string(),
-        user_name.to_string(),
-    );
+    // let extraction_path = "./extracted";
+    let decode_return = decode_image(output_file_path.to_string(), user_name.to_string());
 
     // println!("Extracted file saved to: {}", extraction_path);
 

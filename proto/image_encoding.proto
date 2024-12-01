@@ -9,6 +9,7 @@ message EncodedImageRequest {
   bytes image_data = 1;
   string file_name = 2;
   string user_name = 3;
+  string client_server_socket = 4;
 }
 
 message EncodedImageResponse {

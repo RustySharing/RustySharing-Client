@@ -1,0 +1,16 @@
+syntax = "proto3";
+package peer_to_peer;
+
+service PeerToPeer {
+  rpc PeerToPeer (PeerToPeerRequest) returns (PeerToPeerResponse);
+}
+
+message PeerToPeerRequest {
+  string requester_user_name = 1;
+  string requested_views = 2;
+  string requested_image_name = 3;
+}
+
+message PeerToPeerResponse {
+  bytes image_data = 1;
+}

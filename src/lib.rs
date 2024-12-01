@@ -1,3 +1,4 @@
+pub mod clientserver;
 pub mod image_decode;
 pub mod image_encode_service;
 pub mod utils;
