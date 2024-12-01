@@ -115,7 +115,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
     let do_random_selection = args.iter().any(|arg| arg == "--random-selection");
 
     // TODO: server_list replaced with querying service directory
-    let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54", "10.7.17.155"];
+    let server_list: Vec<&str> = vec!["10.7.17.155"];
 
     let mut rng = rand::thread_rng();
     let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
