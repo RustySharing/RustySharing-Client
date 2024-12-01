@@ -129,38 +129,32 @@ pub fn display_dynamic_image(image: DynamicImage) {
         })
         .collect();
 
-    // Create the window
     let mut window = Window::new(
         "Display Image - [Draggable]",
-        800, // Window width (bigger than image for movement)
-        600, // Window height
+        800,
+        600,
         WindowOptions {
             resize: false,
             ..WindowOptions::default()
         },
     )
-    .expect("Unable to create window");
+    .unwrap();
 
-    // Variables to track image position and dragging state
     let mut image_x = 0;
     let mut image_y = 0;
     let mut dragging = false;
     let mut last_mouse_pos = (0, 0);
 
-    // Main loop
     while window.is_open() && !window.is_key_down(Key::Escape) {
-        // Handle mouse input
         if let Some(mouse_pos) = window.get_mouse_pos(MouseMode::Clamp) {
             let mouse_x = mouse_pos.0 as i32;
             let mouse_y = mouse_pos.1 as i32;
 
             if window.get_mouse_down(minifb::MouseButton::Left) {
                 if !dragging {
-                    // Start dragging
                     dragging = true;
                     last_mouse_pos = (mouse_x, mouse_y);
                 } else {
-                    // Update image position while dragging
                     let dx = mouse_x - last_mouse_pos.0;
                     let dy = mouse_y - last_mouse_pos.1;
                     image_x += dx;
@@ -168,15 +162,12 @@ pub fn display_dynamic_image(image: DynamicImage) {
                     last_mouse_pos = (mouse_x, mouse_y);
                 }
             } else {
-                // Stop dragging
                 dragging = false;
             }
         }
 
-        // Create a blank buffer to clear the window
-        let mut display_buffer = vec![0u32; 800 * 600]; // Match window size
+        let mut display_buffer = vec![0u32; 800 * 600];
 
-        // Draw the image at the current position
         for y in 0..image_height as usize {
             for x in 0..image_width as usize {
                 let window_x = x as i32 + image_x;
@@ -185,15 +176,11 @@ pub fn display_dynamic_image(image: DynamicImage) {
                 if (0..800).contains(&window_x) && (0..600).contains(&window_y) {
                     let buffer_index = y * image_width as usize + x;
                     let display_index = window_y as usize * 800 + window_x as usize;
-
                     display_buffer[display_index] = buffer[buffer_index];
                 }
             }
         }
 
-        // Update the window with the display buffer
-        window
-            .update_with_buffer(&display_buffer, 800, 600)
-            .expect("Failed to update window buffer");
+        let _ = window.update_with_buffer(&display_buffer, 800, 600);
     }
 }

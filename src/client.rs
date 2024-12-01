@@ -245,7 +245,6 @@ async fn user_interaction(client: &mut Client, user_name: String) -> Result<(), 
         let mut images = Vec::new();
         // read images from ./images directory
         let img_dir = "./images";
-        //create_directory_if_not_exists(img_dir)?;
         let entries = fs::read_dir(img_dir)?;
         for entry in entries {
             let entry = entry?;
@@ -285,16 +284,11 @@ async fn user_interaction(client: &mut Client, user_name: String) -> Result<(), 
                     continue;
                 }
 
-                let (image_name, image_data) = &images[image_choice - 1];
-                // call decode_image with ./images/{image_name}
+                let (image_name, _) = &images[image_choice - 1];
                 let image_path = format!("{}/{}", img_dir, image_name);
                 match decode_image(image_path, user_name.clone()) {
-                    Ok(_) => {
-                        println!("Image displayed.");
-                    }
-                    Err(e) => {
-                        println!("Failed to display image: {}", e);
-                    }
+                    Ok(msg) => println!("{}", msg),
+                    Err(e) => println!("Failed to display image: {}", e),
                 }
             }
             "2" => {
@@ -314,32 +308,52 @@ async fn user_interaction(client: &mut Client, user_name: String) -> Result<(), 
 
                 let owner = &owners[owner_choice - 1];
 
-                println!("Enter the name of the image to request:");
-                let mut image_name = String::new();
-                io::stdin().read_line(&mut image_name)?;
-                let image_name = image_name.trim();
+                // Get owner's images
+                let owner_images = get_images_for_owner(&client, &owner.1).await?;
+                if owner_images.is_empty() {
+                    println!("This owner has no images.");
+                    continue;
+                }
+
+                println!("Select an image to request:");
+                for (i, (image, _)) in owner_images.iter().enumerate() {
+                    println!("{}. {}", i + 1, image.description);
+                }
+
+                let mut image_choice = String::new();
+                io::stdin().read_line(&mut image_choice)?;
+                let image_choice: usize = image_choice.trim().parse().unwrap_or(0);
+
+                if image_choice == 0 || image_choice > owner_images.len() {
+                    println!("Invalid choice.");
+                    continue;
+                }
+
+                let (selected_image, _) = &owner_images[image_choice - 1];
+
+                println!("Enter the number of views to request:");
+                let mut view_count = String::new();
+                io::stdin().read_line(&mut view_count)?;
+                let view_count = view_count.trim();
 
                 let owner_socket = &owner.2;
-                // append https:// to owner_socket
                 let owner_socket = format!("http://{}", owner_socket);
                 let mut client = PeerToPeerClient::connect(owner_socket.to_string()).await?;
                 client = client.max_decoding_message_size(100 * 1024 * 1024);
-                let request: Request<PeerToPeerRequest> = tonic::Request::new(PeerToPeerRequest {
+                let request = tonic::Request::new(PeerToPeerRequest {
                     requester_user_name: user_name.clone(),
-                    requested_image_name: image_name.to_string(),
-                    requested_views: 1.to_string(),
+                    requested_image_name: selected_image.description.clone(),
+                    requested_views: view_count.to_string(),
                 });
 
                 let response = client.peer_to_peer(request).await?;
                 let encoded_data = &response.get_ref().image_data;
 
-                // save the image to ./images directory
                 let img_dir = "./images";
                 create_directory_if_not_exists(img_dir)?;
-                let image_path = format!("{}/{}", img_dir, image_name);
+                let image_path = format!("{}/{}", img_dir, selected_image.description);
                 let file = File::create(image_path.clone())?;
                 bytes_to_file(encoded_data, &file);
-                // Set to 10 MB
             }
             "3" => {
                 println!("Exiting.");
@@ -357,26 +371,40 @@ async fn user_interaction(client: &mut Client, user_name: String) -> Result<(), 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = env::args().collect();
+    if args.len() < 3 {
+        println!("Usage: {} <user_name> <img_dir>", args[0]);
+        return Ok(());
+    }
+
     let user_name = &args[1];
-    //let image_path = &args[2];
-    // start the client's server
+    let img_dir = &args[2];
+
+    // Initialize networking
     let ip = local_ip::get().unwrap();
-    let mut myport: u16 = 50051;
-    // Get a not busy port
-    match find_available_port() {
-        Ok(port) => {
-            println!("Found available port: {}", port);
-            myport = port;
-        }
-        Err(e) => {
-            println!("Error: {}", e);
+    let myport = find_available_port().unwrap_or(50051);
+    let addr = format!("{}:{}", ip, myport).parse()?;
+
+    // Set up server
+    let mut client = connect().await.max_decoding_message_size(100 * 1024 * 1024);
+
+    // Process all images in the directory
+    let entries = fs::read_dir(img_dir)?;
+    for entry in entries {
+        let entry = entry?;
+        let path = entry.path();
+        if path.is_file() {
+            if let Some(extension) = path.extension() {
+                if extension == "png" || extension == "jpg" || extension == "jpeg" {
+                    println!("Encoding image: {:?}", path);
+                    let path_str = path.to_str().unwrap();
+                    let response = image_encode(&mut client, path_str, user_name, addr).await;
+                    println!("RESPONSE={:?}", response);
+                }
+            }
         }
     }
 
-    let addr = format!("{}:{}", ip, myport).parse()?;
-    let mut client = connect().await.max_decoding_message_size(100 * 1024 * 1024); // Set to 10 MB
-    let response = image_encode(&mut client, "./input_image.png", user_name, addr).await;
-    println!("RESPONSE={:?}", response);
+    // Start server
     tokio::spawn(async move {
         Server::builder()
             .add_service(PeerToPeerServer::new(MyPeerToPeer::default()))
@@ -384,18 +412,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .await
             .unwrap();
     });
+
     println!("Server is running at {}", addr);
     let mut client = Client::new();
     println!("Initial database state:");
     display_ownership_hierarchy(&client).await?;
 
-    // now from the list of owners, allow the user to select an owner
-    // then for the owner allow the user to select an image
-    // then we will send a request for that image to the owner
-    // then we will display the image
-    // Prompt the user to either view an image they have again(from the vector of current images) or request a new image or exit
-    let img_dir = "./images";
-    create_directory_if_not_exists(img_dir)?;
+    create_directory_if_not_exists("./images")?;
     user_interaction(&mut client, user_name.to_string()).await?;
+
     Ok(())
 }
