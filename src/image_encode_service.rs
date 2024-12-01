@@ -113,7 +113,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
     let do_random_selection = args.iter().any(|arg| arg == "--random-selection");
 
     // TODO: server_list replaced with querying service directory
-    let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54"];
+    let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54", "10.7.17.155"];
 
     let mut rng = rand::thread_rng();
     let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
@@ -202,19 +202,14 @@ pub async fn image_encode(
 
     bytes_to_file(encoded_data, &file);
 
-    let extraction_path = "./extracted"; // Path to save extracted image
-                                         // if let Err(e) = create_directory_if_not_exists(extraction_path) {
-                                         //     eprintln!("Error creating directory: {}", e);
-                                         // }
-                                         // // Extract the hidden file from the image
-                                         // let _ = unveil(
-                                         //     Path::new(output_file_path),
-                                         //     Path::new(extraction_path),
-                                         //     &CodecOptions::default(),
-                                         // );
-    let decode_return = decode_image(output_file_path.to_string(), extraction_path.to_string());
+    let extraction_path = "./extracted";
+    let decode_return = decode_image(
+        output_file_path.to_string(),
+        extraction_path.to_string(),
+        user_name.to_string(),
+    );
 
-    println!("Extracted file saved to: {}", extraction_path);
+    // println!("Extracted file saved to: {}", extraction_path);
 
     decode_return.unwrap().to_string()
 }

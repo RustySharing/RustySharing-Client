@@ -2,206 +2,194 @@ pub mod image_decode;
 pub mod image_encode_service;
 pub mod utils;
 
-// use image::DynamicImage;
-// use std::fs::File;
-// use std::io::Write;
-// use std::path::Path;
-// use stegano_core::media::audio::wav_iter::AudioWavIter;
-// use stegano_core::media::image::LsbCodec;
-// use stegano_core::universal_decoder::{Decoder, OneBitUnveil};
-// use stegano_core::{CodecOptions, Media, Message, RawMessage, SteganoError};
+use image::DynamicImage;
+use std::path::Path;
+use stegano_core::media::audio::wav_iter::AudioWavIter;
+use stegano_core::media::image::LsbCodec;
+use stegano_core::universal_decoder::{Decoder, OneBitUnveil};
+use stegano_core::{CodecOptions, Media, Message, SteganoError};
 
-// #[derive(Debug)]
-// enum LocalSteganoError {
-//     NoSecretData,
-//     WriteError { source: std::io::Error },
-//     ImageError { source: image::ImageError },
-// }
+pub fn unveil_image(
+    secret_media: &Path,
+    opts: &CodecOptions,
+) -> Result<DynamicImage, SteganoError> {
+    let media = Media::from_file(secret_media)?;
 
-// impl PartialEq for LocalSteganoError {
-//     fn eq(&self, other: &Self) -> bool {
-//         match (self, other) {
-//             (LocalSteganoError::NoSecretData, LocalSteganoError::NoSecretData) => true,
-//             (LocalSteganoError::WriteError { .. }, LocalSteganoError::WriteError { .. }) => false,
-//             (LocalSteganoError::ImageError { .. }, LocalSteganoError::ImageError { .. }) => false,
-//             _ => false,
-//         }
-//     }
-// }
+    let files = match media {
+        Media::Image(image) => {
+            let mut decoder = LsbCodec::decoder(&image, opts);
+            let msg = Message::of(&mut decoder);
+            let mut files = msg.files;
 
-// struct Message {
-//     text: Option<String>,
-//     image_data: Option<Vec<u8>>,
-// }
+            if let Some(text) = msg.text {
+                files.push(("secret-message.txt".to_owned(), text.as_bytes().to_vec()));
+            }
 
-// pub fn unveil(
-//     secret_media: &Path,
-//     destination: &Path,
-//     opts: &CodecOptions,
-// ) -> Result<(), LocalSteganoError> {
-//     let media = Media::from_file(secret_media)?;
+            files
+        }
+        Media::Audio(audio) => {
+            let mut decoder = Decoder::new(AudioWavIter::new(audio.1.into_iter()), OneBitUnveil);
 
-//     let files = match media {
-//         Media::Image(image) => {
-//             let mut decoder = LsbCodec::decoder(&image, opts);
-//             let msg = Message::of(&mut decoder);
-//             let mut files = msg.files;
+            let msg = Message::of(&mut decoder);
+            let mut files = msg.files;
 
-//             if let Some(text) = msg.text {
-//                 files.push(("secret-message.txt".to_owned(), text.as_bytes().to_vec()));
-//             }
+            if let Some(text) = msg.text {
+                files.push(("secret-message.txt".to_owned(), text.as_bytes().to_vec()));
+            }
 
-//             files
-//         }
-//         Media::Audio(audio) => {
-//             let mut decoder = Decoder::new(AudioWavIter::new(audio.1.into_iter()), OneBitUnveil);
+            files
+        }
+    };
 
-//             let msg = Message::of(&mut decoder);
-//             let mut files = msg.files;
+    if files.is_empty() {
+        return Err(SteganoError::NoSecretData);
+    }
 
-//             if let Some(text) = msg.text {
-//                 files.push(("secret-message.txt".to_owned(), text.as_bytes().to_vec()));
-//             }
+    for (file_name, buf) in files.iter().map(|(file_name, buf)| {
+        let file = Path::new(file_name).file_name().unwrap().to_str().unwrap();
 
-//             files
-//         }
-//     };
+        (file, buf)
+    }) {
+        if file_name.ends_with(".png")
+            || file_name.ends_with(".jpg")
+            || file_name.ends_with(".jpeg")
+        {
+            return image::load_from_memory(buf).map_err(|_| SteganoError::InvalidImageMedia);
+        }
+    }
 
-//     if files.is_empty() {
-//         return Err(LocalSteganoError::NoSecretData);
-//     }
+    println!("No image found in the media.");
 
-//     for (file_name, buf) in files.iter().map(|(file_name, buf)| {
-//         let file = Path::new(file_name).file_name().unwrap().to_str().unwrap();
+    Err(SteganoError::InvalidImageMedia)
+}
 
-//         (file, buf)
-//     }) {
-//         let target_file = destination.join(file_name);
-//         let mut target_file =
-//             File::create(target_file).map_err(|source| LocalSteganoError::WriteError { source })?;
+pub fn unveil_txt(secret_media: &Path, opts: &CodecOptions) -> Result<String, SteganoError> {
+    let media = Media::from_file(secret_media)?;
 
-//         target_file
-//             .write_all(buf.as_slice())
-//             .map_err(|source| LocalSteganoError::WriteError { source })?;
-//     }
+    let files = match media {
+        Media::Image(image) => {
+            let mut decoder = LsbCodec::decoder(&image, opts);
+            let msg = Message::of(&mut decoder);
+            let mut files = msg.files;
 
-//     Ok(())
-// }
+            if let Some(text) = msg.text {
+                files.push(("secret-message.txt".to_owned(), text.as_bytes().to_vec()));
+            }
 
-// fn extract_files(msg: &Message) -> Result<Vec<(String, Vec<u8>)>, LocalSteganoError> {
-//     let mut files = Vec::new();
+            files
+        }
+        Media::Audio(audio) => {
+            let mut decoder = Decoder::new(AudioWavIter::new(audio.1.into_iter()), OneBitUnveil);
 
-//     if let Some(text) = &msg.text {
-//         files.push(("secret-message.txt".to_owned(), text.as_bytes().to_vec()));
-//     }
+            let msg = Message::of(&mut decoder);
+            let mut files = msg.files;
 
-//     if let Some(image_data) = &msg.image_data {
-//         files.push(("hidden-image.png".to_owned(), image_data.clone()));
-//     }
+            if let Some(text) = msg.text {
+                files.push(("secret-message.txt".to_owned(), text.as_bytes().to_vec()));
+            }
 
-//     if files.is_empty() {
-//         return Err(SteganoError::NoSecretData);
-//     }
+            files
+        }
+    };
 
-//     Ok(files)
-// }
+    if files.is_empty() {
+        return Err(SteganoError::NoSecretData);
+    }
 
-// fn save_files(destination: &Path, files: Vec<(String, Vec<u8>)>) -> Result<(), LocalSteganoError> {
-//     for (file_name, buf) in files.iter().map(|(file_name, buf)| {
-//         let file = Path::new(file_name).file_name().unwrap().to_str().unwrap();
+    for (file_name, buf) in files.iter().map(|(file_name, buf)| {
+        let file = Path::new(file_name).file_name().unwrap().to_str().unwrap();
 
-//         (file, buf)
-//     }) {
-//         let target_file = destination.join(file_name);
-//         let mut target_file =
-//             File::create(target_file).map_err(|source| SteganoError::WriteError { source })?;
+        (file, buf)
+    }) {
+        println!("file_name: {}", file_name);
+        if file_name.ends_with(".txt") {
+            return String::from_utf8(buf.clone()).map_err(|_| SteganoError::NoSecretData);
+        }
+    }
 
-//         target_file
-//             .write_all(buf.as_slice())
-//             .map_err(|source| SteganoError::WriteError { source })?;
-//     }
+    println!("No secret message found in the media.");
 
-//     Ok(())
-// }
+    Err(SteganoError::NoSecretData)
+}
 
-// fn get_hidden_image(msg: &Message) -> Result<DynamicImage, LocalSteganoError> {
-//     let files = extract_files(msg)?;
+use minifb::{Key, MouseMode, Window, WindowOptions};
 
-//     for (file_name, buf) in files {
-//         if file_name.ends_with(".png") || file_name.ends_with(".jpg") {
-//             let image = image::load_from_memory(&buf)
-//                 .map_err(|source| LocalSteganoError::ImageError { source })?;
-//             return Ok(image);
-//         }
-//     }
+pub fn display_dynamic_image(image: DynamicImage) {
+    let rgba_image = image.to_rgba();
+    let (image_width, image_height) = rgba_image.dimensions();
+    let buffer: Vec<u32> = rgba_image
+        .pixels()
+        .map(|p| {
+            let [r, g, b, a] = p.data;
+            ((a as u32) << 24) | ((r as u32) << 16) | ((g as u32) << 8) | (b as u32)
+        })
+        .collect();
 
-//     Err(LocalSteganoError::NoSecretData)
-// }
+    // Create the window
+    let mut window = Window::new(
+        "Display Image - [Draggable]",
+        800, // Window width (bigger than image for movement)
+        600, // Window height
+        WindowOptions {
+            resize: false,
+            ..WindowOptions::default()
+        },
+    )
+    .expect("Unable to create window");
 
-// fn get_hidden_text(msg: &Message) -> Result<String, LocalSteganoError> {
-//     let files = extract_files(msg)?;
+    // Variables to track image position and dragging state
+    let mut image_x = 0;
+    let mut image_y = 0;
+    let mut dragging = false;
+    let mut last_mouse_pos = (0, 0);
 
-//     for (file_name, buf) in files {
-//         if file_name == "secret-message.txt" {
-//             let text = String::from_utf8(buf).map_err(|_| LocalSteganoError::NoSecretData)?;
-//             return Ok(text);
-//         }
-//     }
+    // Main loop
+    while window.is_open() && !window.is_key_down(Key::Escape) {
+        // Handle mouse input
+        if let Some(mouse_pos) = window.get_mouse_pos(MouseMode::Clamp) {
+            let mouse_x = mouse_pos.0 as i32;
+            let mouse_y = mouse_pos.1 as i32;
 
-//     Err(SteganoError::NoSecretData)
-// }
+            if window.get_mouse_down(minifb::MouseButton::Left) {
+                if !dragging {
+                    // Start dragging
+                    dragging = true;
+                    last_mouse_pos = (mouse_x, mouse_y);
+                } else {
+                    // Update image position while dragging
+                    let dx = mouse_x - last_mouse_pos.0;
+                    let dy = mouse_y - last_mouse_pos.1;
+                    image_x += dx;
+                    image_y += dy;
+                    last_mouse_pos = (mouse_x, mouse_y);
+                }
+            } else {
+                // Stop dragging
+                dragging = false;
+            }
+        }
 
-// #[cfg(test)]
-// mod tests {
-//     use super::*;
-//     use image::DynamicImage;
+        // Create a blank buffer to clear the window
+        let mut display_buffer = vec![0u32; 800 * 600]; // Match window size
 
-//     #[test]
-//     fn test_get_hidden_text() {
-//         let msg = Message {
-//             text: Some("This is a secret message".to_string()),
-//             image_data: None,
-//         };
+        // Draw the image at the current position
+        for y in 0..image_height as usize {
+            for x in 0..image_width as usize {
+                let window_x = x as i32 + image_x;
+                let window_y = y as i32 + image_y;
 
-//         let result = get_hidden_text(&msg);
-//         assert!(result.is_ok());
-//         assert_eq!(result.unwrap(), "This is a secret message");
-//     }
+                if (0..800).contains(&window_x) && (0..600).contains(&window_y) {
+                    let buffer_index = y * image_width as usize + x;
+                    let display_index = window_y as usize * 800 + window_x as usize;
 
-//     #[test]
-//     fn test_get_hidden_text_no_data() {
-//         let msg = Message {
-//             text: None,
-//             image_data: None,
-//         };
+                    display_buffer[display_index] = buffer[buffer_index];
+                }
+            }
+        }
 
-//         let result = get_hidden_text(&msg);
-//         assert!(result.is_err());
-//         assert_eq!(result.unwrap_err(), LocalSteganoError::NoSecretData);
-//     }
-
-//     #[test]
-//     fn test_get_hidden_image() {
-//         let image_data = include_bytes!("test_image.png").to_vec();
-//         let msg = Message {
-//             text: None,
-//             image_data: Some(image_data),
-//         };
-
-//         let result = get_hidden_image(&msg);
-//         assert!(result.is_ok());
-//         assert!(matches!(result.unwrap(), DynamicImage::ImageRgb8(_)));
-//     }
-
-//     #[test]
-//     fn test_get_hidden_image_no_data() {
-//         let msg = Message {
-//             text: None,
-//             image_data: None,
-//         };
-
-//         let result = get_hidden_image(&msg);
-//         assert!(result.is_err());
-//         assert_eq!(result.unwrap_err(), SteganoError::NoSecretData);
-//     }
-// }
+        // Update the window with the display buffer
+        window
+            .update_with_buffer(&display_buffer, 800, 600)
+            .expect("Failed to update window buffer");
+    }
+}
