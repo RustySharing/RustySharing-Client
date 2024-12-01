@@ -5,8 +5,9 @@ use leader_provider::leader_provider_client::LeaderProviderClient;
 use rand::rngs::StdRng;
 use rand::Rng;
 use rand::SeedableRng;
-use std::fs::File;
+use std::fs::{self, File};
 use std::net::SocketAddr;
+use std::path::Path;
 use std::thread;
 use std::time::{SystemTime, UNIX_EPOCH};
 use steganography::util::{bytes_to_file, file_to_bytes};
@@ -157,6 +158,17 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
     image_encode_client.unwrap()
 }
 
+fn create_directory_if_not_exists(dir_path: &str) -> std::io::Result<()> {
+    // Convert the dir_path to a Path
+    let path = Path::new(dir_path);
+
+    // Create the directory (and any parent directories) if it doesn't exist
+    fs::create_dir_all(path)?;
+
+    println!("Directory '{}' created or already exists.", dir_path);
+
+    Ok(())
+}
 // use crate::image_decode::decode_image;
 pub async fn image_encode(
     client: &mut ImageEncoderClient<tonic::transport::Channel>,
@@ -200,8 +212,10 @@ pub async fn image_encode(
     let encoded_data = &response.get_ref().image_data;
 
     // new file for output
-    let output_file_path = "encoded_image.png";
-
+    // let output_file_path = "encoded_image.png";
+    // output_file_path will be encoded/{image_name}.png
+    let output_file_path = format!("./encoded/{}", get_file_name(image_path));
+    create_directory_if_not_exists("./encoded").unwrap();
     let file = File::create(output_file_path).unwrap(); // Unwrap the Result here
 
     bytes_to_file(encoded_data, &file);

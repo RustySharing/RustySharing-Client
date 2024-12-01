@@ -46,11 +46,14 @@ pub fn unveil_image(
         return Err(SteganoError::NoSecretData);
     }
 
+    // print file names
+
     for (file_name, buf) in files.iter().map(|(file_name, buf)| {
         let file = Path::new(file_name).file_name().unwrap().to_str().unwrap();
 
         (file, buf)
     }) {
+        println!("file_name: {}", file_name);
         if file_name.ends_with(".png")
             || file_name.ends_with(".jpg")
             || file_name.ends_with(".jpeg")

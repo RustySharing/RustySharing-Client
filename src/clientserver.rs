@@ -1,54 +1,106 @@
-// use std::fs::File;
-// use std::path::Path;
+// pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
+//     let args: Vec<String> = std::env::args().collect();
 
-// use stegano_core::{Hide, Media, Message, Persist};
-// use steganography::util::file_to_bytes;
-// use tonic::{Request, Response, Status};
+//     let do_random_selection = args.iter().any(|arg| arg == "--random-selection");
 
-// use hello_world::greeter_server::{Greeter, GreeterServer};
-// use hello_world::{HelloReply, HelloRequest};
+//     // TODO: server_list replaced with querying service directory
+//     let server_list: Vec<&str> = vec!["10.7.16.11", "10.7.17.128", "10.7.16.54", "10.7.17.155"];
 
-// pub mod hello_world {
-//     tonic::include_proto!("helloworld"); // The string specified here must match the proto package name
-// }
-// use peer_to_peer::peer_to_peer_server::{PeerToPeer, PeerToPeerServer};
-// use peer_to_peer::{PeerToPeerRequest, PeerToPeerResponse};
-
-// pub mod peer_to_peer {
-//     tonic::include_proto!("peer_to_peer");
-// }
-
-// #[derive(Debug, Default)]
-// pub struct MyPeerToPeer {}
-
-// #[tonic::async_trait]
-// impl PeerToPeer for MyPeerToPeer {
-//     async fn peer_to_peer(
-//         &self,
-//         request: Request<PeerToPeerRequest>,
-//     ) -> Result<Response<PeerToPeerResponse>, Status> {
-//         let request = request.into_inner();
-//         println!("Got a request: {:?}", request);
-
-//         // encode the image with requester_user_name and requested_views
-//         let new_text = format!(
-//             "{} {}",
-//             request.requester_user_name, request.requested_views
-//         );
-//         let mut message = Message::empty();
-//         message.add_file_data("view_count.txt", new_text.into_bytes());
-//         let mut media = Media::from_file(Path::new(&request.requested_image_name)).unwrap();
-//         media.hide_message(&message).unwrap();
-//         media
-//             .save_as(Path::new(&request.requested_image_name))
-//             .unwrap();
-
-//         let file = File::open(request.requested_image_name.clone())?;
-//         let encoded_bytes = file_to_bytes(file);
-
-//         let reply = PeerToPeerResponse {
-//             image_data: encoded_bytes,
-//         };
-//         Ok(Response::new(reply))
+//     let mut rng = rand::thread_rng();
+//     let random_number = rng.gen_range(0..server_list.len()); // Correcting to use the length of the list
+//     let random_socket = format!("http://{}:50051", server_list[random_number]);
+//     if do_random_selection {
+//         // Attempt to connect to the server
+//         return ImageEncoderClient::connect(random_socket).await.unwrap();
 //     }
+
+//     let leader_provider_client = get_leader_provider_client(server_list)
+//         .await
+//         .unwrap_or_else(|| {
+//             println!("Failed to connect to any leader provider server");
+//             std::process::exit(1);
+//         });
+
+//     let response = persist_leader_provider_client(leader_provider_client, 0)
+//         .await
+//         .unwrap();
+//     let leader_socket = format!("http://{}", response);
+//     println!("Leader socket: {}", leader_socket);
+//     let mut image_encode_client = None;
+
+//     for _ in 0..MAX_LEADER_ATTEMPTS {
+//         match ImageEncoderClient::connect(leader_socket.clone()).await {
+//             Ok(client) => {
+//                 image_encode_client = Some(client);
+//                 break;
+//             }
+//             Err(e) => {
+//                 println!(
+//                     "Failed to connect to leader server at: {} | Error: {}, Exiting Gracefully",
+//                     leader_socket, e
+//                 );
+//                 // std::process::exit(1);
+//             }
+//         }
+//     }
+
+//     image_encode_client.unwrap()
+// }
+
+// // use crate::image_decode::decode_image;
+// pub async fn image_encode(
+//     client: &mut ImageEncoderClient<tonic::transport::Channel>,
+//     image_path: &str,
+//     user_name: &str,
+//     addr: SocketAddr,
+// ) -> String {
+//     let image_file = File::open(image_path).unwrap();
+//     let image_data = file_to_bytes(image_file);
+
+//     let request = tonic::Request::new(EncodedImageRequest {
+//         image_data: image_data.clone(),
+//         file_name: get_file_name(image_path).clone(),
+//         user_name: user_name.to_string(),
+//         client_server_socket: addr.to_string(),
+//     });
+
+//     println!("Sending ...");
+
+//     let response = match client.image_encode(request).await {
+//         Ok(response) => {
+//             //println!("Response: {:?}", response);
+//             response
+//         }
+//         Err(e) => {
+//             println!("Failed to encode image: {}", e);
+//             let mut new_client = connect().await;
+
+//             let new_request = tonic::Request::new(EncodedImageRequest {
+//                 image_data,
+//                 file_name: get_file_name(image_path),
+//                 user_name: user_name.to_string(),
+//                 client_server_socket: addr.to_string(),
+//             });
+//             new_client.image_encode(new_request).await.unwrap()
+//         }
+//     };
+
+//     println!("Sent!");
+
+//     let encoded_data = &response.get_ref().image_data;
+
+//     // new file for output
+//     let output_file_path = "encoded_image.png";
+
+//     let file = File::create(output_file_path).unwrap(); // Unwrap the Result here
+
+//     bytes_to_file(encoded_data, &file);
+
+//     // let extraction_path = "./extracted";
+//     // let decode_return = decode_image(output_file_path.to_string(), user_name.to_string());
+
+//     // println!("Extracted file saved to: {}", extraction_path);
+
+//     // decode_return.unwrap().to_string()
+//     "Encoded image saved".to_string()
 // }

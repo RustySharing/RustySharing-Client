@@ -8,18 +8,6 @@ struct EmbeddedMetaData {
     view_count: i32,
 }
 
-// fn create_directory_if_not_exists(dir_path: &str) -> std::io::Result<()> {
-//     // Convert the dir_path to a Path
-//     let path = Path::new(dir_path);
-
-//     // Create the directory (and any parent directories) if it doesn't exist
-//     fs::create_dir_all(path)?;
-
-//     println!("Directory '{}' created or already exists.", dir_path);
-
-//     Ok(())
-// }
-
 use crate::{display_dynamic_image, unveil_image, unveil_txt};
 
 pub fn decode_image(encoded_image_path: String, user_name: String) -> Result<String, String> {

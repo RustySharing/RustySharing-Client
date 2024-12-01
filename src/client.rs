@@ -1,10 +1,13 @@
 // use rand::{thread_rng, Rng};
 use reqwest::Client;
+use rpc_client::image_decode::decode_image;
 use rpc_client::image_encode_service::{connect, image_encode};
+use rpc_client::unveil_image;
 use serde::{Deserialize, Serialize};
 // use serde_json;
 use std::env;
 use std::error::Error;
+use std::fs;
 use std::fs::File;
 use std::io::{self};
 use std::net::TcpListener;
@@ -54,16 +57,26 @@ fn find_available_port() -> Result<u16, io::Error> {
 use peer_to_peer::peer_to_peer_server::{PeerToPeer, PeerToPeerServer};
 use peer_to_peer::{PeerToPeerRequest, PeerToPeerResponse};
 use stegano_core::{Hide, Media, Persist};
-use steganography::util::file_to_bytes;
+use steganography::util::{bytes_to_file, file_to_bytes};
 use tonic::{Request, Response, Status};
 
 pub mod peer_to_peer {
     tonic::include_proto!("peer_to_peer");
 }
 
+use image::{DynamicImage, ImageFormat};
+use std::io::Cursor;
+
+fn dynamic_image_to_bytes(img: &DynamicImage, format: ImageFormat) -> Vec<u8> {
+    let mut bytes = Vec::new();
+    img.write_to(&mut Cursor::new(&mut bytes), format)
+        .expect("Failed to write image to bytes");
+    bytes
+}
+
 #[derive(Debug, Default)]
 pub struct MyPeerToPeer {}
-
+use stegano_core::{CodecOptions, SteganoError};
 #[tonic::async_trait]
 impl PeerToPeer for MyPeerToPeer {
     async fn peer_to_peer(
@@ -78,15 +91,24 @@ impl PeerToPeer for MyPeerToPeer {
             "{} {}",
             request.requester_user_name, request.requested_views
         );
+        let image_path: String = format!("./encoded/{}", request.requested_image_name);
+
         let mut message = Message::empty();
         message.add_file_data("view_count.txt", new_text.into_bytes());
-        let mut media = Media::from_file(Path::new(&request.requested_image_name)).unwrap();
+        let image = unveil_image(Path::new(&image_path), &CodecOptions::default());
+        let image = image.unwrap();
+        message.add_file_data(
+            "image.png",
+            dynamic_image_to_bytes(&image, ImageFormat::PNG),
+        );
+        create_directory_if_not_exists("./encoded").unwrap();
+        let mut media = Media::from_file(Path::new(&image_path)).unwrap();
         media.hide_message(&message).unwrap();
-        media
-            .save_as(Path::new(&request.requested_image_name))
-            .unwrap();
+        // also save the image that was inside
 
-        let file = File::open(request.requested_image_name.clone())?;
+        media.save_as(Path::new(&image_path)).unwrap();
+
+        let file = File::open(image_path.clone())?;
         let encoded_bytes = file_to_bytes(file);
 
         let reply = PeerToPeerResponse {
@@ -115,7 +137,7 @@ async fn display_ownership_hierarchy(client: &Client) -> Result<(), Box<dyn Erro
         if images.is_empty() {
             println!(" └─ No images owned\n");
         } else {
-            for (i, (image, image_id)) in images.iter().enumerate() {
+            for (i, (image, _image_id)) in images.iter().enumerate() {
                 let is_last = i == images.len() - 1;
                 let prefix = if is_last { " └─ " } else { " ├─ " };
                 println!("{}📷 Image doc ID: {}", prefix, image.imgID);
@@ -197,6 +219,141 @@ async fn get_images_for_owner(
     Ok(images)
 }
 
+fn create_directory_if_not_exists(dir_path: &str) -> std::io::Result<()> {
+    // Convert the dir_path to a Path
+    let path = Path::new(dir_path);
+
+    // Create the directory (and any parent directories) if it doesn't exist
+    fs::create_dir_all(path)?;
+
+    println!("Directory '{}' created or already exists.", dir_path);
+
+    Ok(())
+}
+
+// Client for peer to peer communication
+use peer_to_peer::peer_to_peer_client::PeerToPeerClient;
+// use peer_to_peer::PeerToPeerRequest;
+
+// pub mod peer_to_peer {
+//     tonic::include_proto!("peer_to_peer");
+// }
+
+async fn user_interaction(client: &mut Client, user_name: String) -> Result<(), Box<dyn Error>> {
+    loop {
+        let owners = get_all_owners(&client).await?;
+        let mut images = Vec::new();
+        // read images from ./images directory
+        let img_dir = "./images";
+        //create_directory_if_not_exists(img_dir)?;
+        let entries = fs::read_dir(img_dir)?;
+        for entry in entries {
+            let entry = entry?;
+            let path = entry.path();
+            let file_name = path.file_name().unwrap().to_str().unwrap();
+            let image_data = fs::read(path.clone())?;
+            images.push((file_name.to_string(), image_data));
+        }
+
+        println!("Select an option:");
+        println!("1. View an image you have");
+        println!("2. Request a new image");
+        println!("3. Exit");
+
+        let mut choice = String::new();
+        io::stdin().read_line(&mut choice)?;
+        let choice = choice.trim();
+
+        match choice {
+            "1" => {
+                if images.is_empty() {
+                    println!("You have no images.");
+                    continue;
+                }
+
+                println!("Select an image to view:");
+                for (i, (name, _)) in images.iter().enumerate() {
+                    println!("{}. {}", i + 1, name);
+                }
+
+                let mut image_choice = String::new();
+                io::stdin().read_line(&mut image_choice)?;
+                let image_choice: usize = image_choice.trim().parse().unwrap_or(0);
+
+                if image_choice == 0 || image_choice > images.len() {
+                    println!("Invalid choice.");
+                    continue;
+                }
+
+                let (image_name, image_data) = &images[image_choice - 1];
+                // call decode_image with ./images/{image_name}
+                let image_path = format!("{}/{}", img_dir, image_name);
+                match decode_image(image_path, user_name.clone()) {
+                    Ok(_) => {
+                        println!("Image displayed.");
+                    }
+                    Err(e) => {
+                        println!("Failed to display image: {}", e);
+                    }
+                }
+            }
+            "2" => {
+                println!("Select an owner:");
+                for (i, owner) in owners.iter().enumerate() {
+                    println!("{}. {}", i + 1, owner.0);
+                }
+
+                let mut owner_choice = String::new();
+                io::stdin().read_line(&mut owner_choice)?;
+                let owner_choice: usize = owner_choice.trim().parse().unwrap_or(0);
+
+                if owner_choice == 0 || owner_choice > owners.len() {
+                    println!("Invalid choice.");
+                    continue;
+                }
+
+                let owner = &owners[owner_choice - 1];
+
+                println!("Enter the name of the image to request:");
+                let mut image_name = String::new();
+                io::stdin().read_line(&mut image_name)?;
+                let image_name = image_name.trim();
+
+                let owner_socket = &owner.2;
+                // append https:// to owner_socket
+                let owner_socket = format!("http://{}", owner_socket);
+                let mut client = PeerToPeerClient::connect(owner_socket.to_string()).await?;
+                client = client.max_decoding_message_size(100 * 1024 * 1024);
+                let request: Request<PeerToPeerRequest> = tonic::Request::new(PeerToPeerRequest {
+                    requester_user_name: user_name.clone(),
+                    requested_image_name: image_name.to_string(),
+                    requested_views: 1.to_string(),
+                });
+
+                let response = client.peer_to_peer(request).await?;
+                let encoded_data = &response.get_ref().image_data;
+
+                // save the image to ./images directory
+                let img_dir = "./images";
+                create_directory_if_not_exists(img_dir)?;
+                let image_path = format!("{}/{}", img_dir, image_name);
+                let file = File::create(image_path.clone())?;
+                bytes_to_file(encoded_data, &file);
+                // Set to 10 MB
+            }
+            "3" => {
+                println!("Exiting.");
+                break;
+            }
+            _ => {
+                println!("Invalid choice.");
+            }
+        }
+    }
+
+    Ok(())
+}
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = env::args().collect();
@@ -219,6 +376,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = format!("{}:{}", ip, myport).parse()?;
     let mut client = connect().await.max_decoding_message_size(100 * 1024 * 1024); // Set to 10 MB
     let response = image_encode(&mut client, "./input_image.png", user_name, addr).await;
+    println!("RESPONSE={:?}", response);
     tokio::spawn(async move {
         Server::builder()
             .add_service(PeerToPeerServer::new(MyPeerToPeer::default()))
@@ -227,13 +385,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .unwrap();
     });
     println!("Server is running at {}", addr);
-    let client = Client::new();
+    let mut client = Client::new();
     println!("Initial database state:");
     display_ownership_hierarchy(&client).await?;
-    println!("RESPONSE={:?}", response);
 
-    // Start the GUI
-    // start_gui();
-
+    // now from the list of owners, allow the user to select an owner
+    // then for the owner allow the user to select an image
+    // then we will send a request for that image to the owner
+    // then we will display the image
+    // Prompt the user to either view an image they have again(from the vector of current images) or request a new image or exit
+    let img_dir = "./images";
+    create_directory_if_not_exists(img_dir)?;
+    user_interaction(&mut client, user_name.to_string()).await?;
     Ok(())
 }
