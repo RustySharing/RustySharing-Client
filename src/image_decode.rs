@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::{fs, path::Path, str};
-use stegano_core::{commands::unveil, CodecOptions, SteganoCore};
+use stegano_core::{commands::unveil, CodecOptions, Hide, Media, Message, Persist, SteganoCore};
 
 #[derive(Serialize, Deserialize, Debug)]
 struct EmbeddedMetaData {
@@ -51,7 +51,10 @@ pub fn decode_image(
             return Err("User name does not match".to_string());
         }
         // Read the number that follows user_name
-        view_count = text[user_name.len()..].parse::<i32>().unwrap();
+        match text[user_name.len() + 1..].parse::<i32>() {
+            Ok(count) => view_count = count,
+            Err(_) => return Err("Failed to parse view count".to_string()),
+        }
     }
     // if view_count is greater than 0, then display the image else return you have no views
     if view_count > 0 {
@@ -62,9 +65,23 @@ pub fn decode_image(
 
     // Now we need to update view count and add it back to encoded image
     // We will make the text to be user_name + {view_count -1}
-    let new_text = format!("{}{}", user_name, view_count - 1);
+    let new_text = format!("{} {}", user_name, view_count - 1);
 
     // Now we need to encode the new text back to the image
+    let mut message = Message::empty();
+    message.add_file_data("view_count.txt", new_text.into_bytes());
 
-    Ok(format!("Extracted file saved to: {}", extraction_path))
+    let mut media = Media::from_file(Path::new(&encoded_image_path)).unwrap();
+    media.hide_message(&message).unwrap();
+    media.save_as(Path::new(&encoded_image_path)).unwrap();
+
+    // let read_txt = unveil_txt(Path::new(&encoded_image_path), &CodecOptions::default());
+    // if let Ok(text) = read_txt {
+    //     println!("Extracted text 2: {}", text);
+    // }
+
+    Ok(format!(
+        "Extracted correctly. Remaining views: {}",
+        view_count - 1
+    ))
 }
