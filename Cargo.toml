@@ -16,7 +16,7 @@ image = "0.21.3"
 local-ip = "0.1.0"
 minifb = "0.27.0"
 # Protocol buffer implementation
-
+reqwest = { version = "0.12.9", features = ["json", "blocking"] }
 prost = "0.13.3"
 rand = "0.8.5"
 serde = { version = "1.0.214", features = ["derive"] }

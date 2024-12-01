@@ -157,7 +157,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
     image_encode_client.unwrap()
 }
 
-use crate::image_decode::decode_image;
+// use crate::image_decode::decode_image;
 pub async fn image_encode(
     client: &mut ImageEncoderClient<tonic::transport::Channel>,
     image_path: &str,
@@ -207,9 +207,10 @@ pub async fn image_encode(
     bytes_to_file(encoded_data, &file);
 
     // let extraction_path = "./extracted";
-    let decode_return = decode_image(output_file_path.to_string(), user_name.to_string());
+    // let decode_return = decode_image(output_file_path.to_string(), user_name.to_string());
 
     // println!("Extracted file saved to: {}", extraction_path);
 
-    decode_return.unwrap().to_string()
+    // decode_return.unwrap().to_string()
+    "Encoded image saved".to_string()
 }
