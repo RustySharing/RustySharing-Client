@@ -13,8 +13,8 @@ use steganography::util::{bytes_to_file, file_to_bytes};
 // TODO: put these in a config file or environment variables
 const MAX_SERVICE_ATTEMPTS: u32 = 3;
 // maximum number of times a client can connect to a server, and on server connect, that server fails to provide leader
-const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
-const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
+// const MAX_LEADER_PROVIDER_ATTEMPTS: u32 = 3;
+// const MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS: u32 = 3;
 const MAX_LEADER_ATTEMPTS: u32 = 3;
 
 pub mod image_encoding {
@@ -78,7 +78,7 @@ async fn persist_leader_provider_client(
     let mut retry = 0;
 
     loop {
-        let request = tonic::Request::new(request_data.clone());
+        let request = tonic::Request::new(request_data);
         match leader_provider_client.get_leader(request).await {
             Ok(response) => {
                 return Some(response.get_ref().leader_socket.to_string());
@@ -97,15 +97,15 @@ async fn persist_leader_provider_client(
     }
 }
 
-async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
-    for _ in 0..MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS {
-        let leader_provider_client = get_leader_provider_client(server_list.clone()).await?;
-        let leader_socket = persist_leader_provider_client(leader_provider_client, 0).await?;
-        return Some(leader_socket);
-    }
+// async fn persist_on_service_and_leader_provider(server_list: Vec<&str>) -> Option<String> {
+//     for _ in 0..MAX_LEADER_PROVIDER_AND_SERVICE_ATTEMPTS {
+//         let leader_provider_client = get_leader_provider_client(server_list.clone()).await?;
+//         let leader_socket = persist_leader_provider_client(leader_provider_client, 0).await?;
+//         return Some(leader_socket);
+//     }
 
-    None
-}
+//     None
+// }
 
 pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
     let args: Vec<String> = std::env::args().collect();
@@ -123,7 +123,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
         return ImageEncoderClient::connect(random_socket).await.unwrap();
     }
 
-    let mut leader_provider_client = get_leader_provider_client(server_list)
+    let leader_provider_client = get_leader_provider_client(server_list)
         .await
         .unwrap_or_else(|| {
             println!("Failed to connect to any leader provider server");
@@ -148,7 +148,7 @@ pub async fn connect() -> ImageEncoderClient<tonic::transport::Channel> {
                     "Failed to connect to leader server at: {} | Error: {}, Exiting Gracefully",
                     leader_socket, e
                 );
-                std::process::exit(1);
+                // std::process::exit(1);
             }
         }
     }
@@ -160,6 +160,7 @@ use crate::image_decode::decode_image;
 pub async fn image_encode(
     client: &mut ImageEncoderClient<tonic::transport::Channel>,
     image_path: &str,
+    user_name: &str,
 ) -> String {
     let image_file = File::open(image_path).unwrap();
     let image_data = file_to_bytes(image_file);
@@ -167,6 +168,7 @@ pub async fn image_encode(
     let request = tonic::Request::new(EncodedImageRequest {
         image_data: image_data.clone(),
         file_name: get_file_name(image_path).clone(),
+        user_name: user_name.to_string(),
     });
 
     println!("Sending ...");
@@ -181,8 +183,9 @@ pub async fn image_encode(
             let mut new_client = connect().await;
 
             let new_request = tonic::Request::new(EncodedImageRequest {
-                image_data: image_data,
+                image_data,
                 file_name: get_file_name(image_path),
+                user_name: user_name.to_string(),
             });
             new_client.image_encode(new_request).await.unwrap()
         }
