@@ -1,5 +1,6 @@
+use image::{DynamicImage, ImageFormat};
 use serde::{Deserialize, Serialize};
-use std::{path::Path, str};
+use std::{io::Cursor, path::Path, str};
 use stegano_core::{/*commands::unveil,SteganoCore*/ CodecOptions, Hide, Media, Message, Persist,};
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -9,7 +10,12 @@ struct EmbeddedMetaData {
 }
 
 use crate::{display_dynamic_image, unveil_image, unveil_txt};
-
+fn dynamic_image_to_bytes(img: &DynamicImage, format: ImageFormat) -> Vec<u8> {
+    let mut bytes = Vec::new();
+    img.write_to(&mut Cursor::new(&mut bytes), format)
+        .expect("Failed to write image to bytes");
+    bytes
+}
 pub fn decode_image(encoded_image_path: String, user_name: String) -> Result<String, String> {
     //let extraction_path = "./extracted"; // Path to save extracted image
     // if let Err(e) = create_directory_if_not_exists(&extraction_path) {
@@ -56,7 +62,15 @@ pub fn decode_image(encoded_image_path: String, user_name: String) -> Result<Str
     message.add_file_data("view_count.txt", new_text.into_bytes());
 
     let mut media = Media::from_file(Path::new(&encoded_image_path)).unwrap();
+    let image = unveil_image(Path::new(&encoded_image_path), &CodecOptions::default());
+    let image = image.unwrap();
+    message.add_file_data(
+        "image.png",
+        dynamic_image_to_bytes(&image, ImageFormat::PNG),
+    );
+
     media.hide_message(&message).unwrap();
+
     media.save_as(Path::new(&encoded_image_path)).unwrap();
 
     // let read_txt = unveil_txt(Path::new(&encoded_image_path), &CodecOptions::default());
